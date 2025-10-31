@@ -1,0 +1,58 @@
+"use client";
+
+import { useLocale } from "@/app/_hooks/useLocale";
+import { useTranslation } from "@/app/_hooks/useTranslation";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { mockArticles } from "./mockArticles";
+import LocaleLink from "../../_global/LocaleLink";
+import { formatTitle } from "@/app/_helpers/GlobalHelpers";
+
+export default function BlogRecentPosts() {
+  const t = useTranslation("blog");
+  const locale = useLocale();
+  const recentPosts = mockArticles.slice(0, 4);
+
+  return (
+    <div className="space-y-4">
+      <h3 className="font-semibold text-lg">{t.recentPosts}</h3>
+      <div className="space-y-3">
+        {recentPosts.map((post, index) => (
+          <motion.div
+            key={post.id}
+            initial={{ opacity: 0, x: locale === "ar" ? 20 : -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="flex group gap-3 p-2 rounded-lg hover:bg-muted transition-colors cursor-pointer"
+          >
+            <div className="relative w-16 h-16 shrink-0 rounded overflow-hidden">
+              <Image
+                src={post.image || "/placeholder.svg"}
+                alt={post.title[locale]}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <LocaleLink
+                href={`/blog/${formatTitle(post.title[locale])}?articleId=${
+                  post.id
+                }`}
+              >
+                <p className="text-sm font-medium group-hover:underline group-hover:text-sky-500 line-clamp-2">
+                  {post.title[locale]}
+                </p>
+              </LocaleLink>
+
+              <p className="text-xs text-muted-foreground">
+                {new Date(post.date).toLocaleDateString(
+                  locale === "ar" ? "ar-SA" : "en-US"
+                )}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}

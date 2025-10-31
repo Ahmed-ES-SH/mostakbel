@@ -2,5 +2,238 @@
   "mainMeta": {
     "title": "Dialogue and Civil Peace Center - Charity Organization",
     "description": "A charitable platform dedicated to promoting dialogue and civil peace in Syria, supporting humanitarian and development projects that strengthen community cooperation and solidarity."
+  },
+
+  "hero": {
+    "discover": "Discover Now",
+    "watchVideo": "Watch Video"
+  },
+
+  "services": {
+    "subtitle": "Charity Services",
+    "title": "We Do It For All People\nHumanist Services",
+    "learnMore": "Learn More"
+  },
+
+  "openDoor": {
+    "title": "Our Door Are Always Open To More People Who Want To Support Each Others!",
+    "alwaysOpen": "Always Open",
+    "openDescription": "Our community welcomes everyone with open arms and endless opportunities",
+    "morePeople": "More People",
+    "peopleDescription": "Join our growing family of passionate individuals making a difference",
+    "supportEachOther": "Support Each Other",
+    "supportDescription": "Together we grow stronger through mutual support and collaboration",
+    "getInvolved": "Get Involved"
+  },
+
+  "helpSection": {
+    "title": "We Always Help The Needy People",
+    "description": "Discover the inspiring stories of individuals and communities transformed by our programs. Our success stories highlight the real-life impact of your donations.",
+    "stats": {
+      "volunteers": "Incredible Volunteers",
+      "campaigns": "Successful Campaigns",
+      "donors": "Monthly Donors",
+      "support": "Team Support"
+    }
+  },
+
+  "footer": {
+    "newsletter": {
+      "title": "Subscribe To Our Newsletter",
+      "description": "Regular inspections and feedback mechanisms",
+      "placeholder": "Enter your email address",
+      "button": "Subscribe"
+    },
+    "donation": {
+      "description": "Our secure online donation platform allows you to make contributions quickly and safely. Choose from various payment methods."
+    },
+    "tagline": "Making a difference through secure and transparent donations.",
+    "links": {
+      "about": {
+        "title": "About Us",
+        "about": "About Us",
+        "news": "Our News",
+        "campaign": "Our Campaign",
+        "pricing": "Pricing policy",
+        "contact": "Contact Us"
+      },
+      "support": {
+        "title": "Support",
+        "home": "Home Support",
+        "support": "Support",
+        "campaign": "Our Campaign",
+        "contact": "Contact Us"
+      }
+    },
+    "contact": {
+      "title": "Contact Us Now"
+    },
+    "copyright": "All Rights Reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+
+  "nav": {
+    "home": "Home",
+    "projects": "Our Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "heroProjects": {
+    "title": "Our Projects",
+    "subtitle": "Building peace and community through sustainable humanitarian initiatives",
+    "btn": "Explore Projects"
+  },
+  "aboutProjects": {
+    "title": "About Our Projects",
+    "description": "The Center for Dialogue and Civil Peace is committed to supporting sustainable humanitarian projects that create lasting positive change in our communities. Through education, community development, and peacebuilding initiatives, we work together to foster dialogue, understanding, and mutual respect among all people.",
+    "peace": "Peace Building",
+    "peaceDesc": "Creating spaces for dialogue and understanding",
+    "education": "Education",
+    "educationDesc": "Empowering communities through knowledge",
+    "development": "Development",
+    "developmentDesc": "Sustainable growth and prosperity"
+  },
+  "categories": {
+    "title": "Project Categories",
+    "education": "Education",
+    "educationDesc": "Programs focused on quality education and skill development for all ages",
+    "community": "Community Development",
+    "communityDesc": "Initiatives that strengthen community bonds and local economies",
+    "peacebuilding": "Peacebuilding",
+    "peacebuildingDesc": "Dialogue programs and conflict resolution initiatives",
+    "health": "Health & Wellness",
+    "healthDesc": "Healthcare access and wellness programs for underserved populations",
+    "environment": "Environment",
+    "environmentDesc": "Sustainable environmental conservation and climate action projects"
+  },
+  "featured": {
+    "title": "Featured Projects",
+    "readMore": "Read More",
+    "donate": "Donate Now",
+    "beneficiaries": "Beneficiaries",
+    "progress": "Progress"
+  },
+  "impact": {
+    "title": "Our Impact",
+    "projects": "Projects Completed",
+    "beneficiaries": "Beneficiaries Reached",
+    "volunteers": "Active Volunteers",
+    "communities": "Communities Served"
+  },
+  "cta": {
+    "title": "Join Us in Making a Difference",
+    "description": "Your support helps us continue our mission of building peace and fostering dialogue. Whether through volunteering, donations, or spreading awareness, every contribution matters.",
+    "button": "Join Us"
+  },
+  "footerProjects": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved"
+  },
+
+  "blog": {
+    "title": "Our Blog",
+    "search": "Search for an article",
+    "searchPlaceholder": "Search articles...",
+    "categories": "Categories",
+    "tags": "Tags",
+    "recentPosts": "Recent Posts",
+    "readMore": "Read More",
+    "category": "Category",
+    "date": "Date"
+  },
+
+  "articlePage": {
+    "article": {
+      "by": "By",
+      "published": "Published",
+      "category": "Category",
+      "tags": "Tags",
+      "share": "Share this article",
+      "shareOn": "Share on",
+      "relatedArticles": "Related Articles",
+      "comments": "Comments",
+      "leaveComment": "Leave a Comment",
+      "name": "Name",
+      "email": "Email",
+      "comment": "Comment",
+      "submit": "Submit",
+      "readMore": "Read More"
+    },
+    "sidebar": {
+      "search": "Search articles",
+      "categories": "Categories",
+      "tags": "Tags",
+      "noResults": "No articles found"
+    }
+  },
+
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We'd love to hear from you. Send us a message!",
+    "address": "Address",
+    "addressValue": "123 Business Street, Suite 100, New York, NY 10001",
+    "phone": "Phone",
+    "phoneValue": "+1 (555) 123-4567",
+    "email": "Email",
+    "emailValue": "hello@company.com",
+    "haveQuestions": "Have Questions?",
+    "haveQuestionsDesc": "We're here to help. Reach out to us anytime.",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Type Your Message",
+      "submit": "Send a Message"
+    }
+  },
+
+  "projectPage": {
+    "projectGallery": "Project Gallery",
+    "hero": {
+      "donateNow": "Donate Now",
+      "learnMore": "Learn More"
+    },
+    "overview": {
+      "title": "Project Overview",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "status": "Status"
+    },
+    "impact": {
+      "title": "Project Impact",
+      "description": "See the measurable difference our project is making in communities"
+    },
+    "donation": {
+      "title": "Support This Project",
+      "description": "Every donation brings clean water closer to those in need",
+      "raised": "raised",
+      "goal": "goal",
+      "toReachGoal": "to reach goal",
+      "selectAmount": "Select an amount:",
+      "customAmount": "Or enter custom amount:",
+      "donateNow": "Donate Now"
+    },
+    "team": {
+      "title": "Meet Our Team"
+    },
+    "testimonials": {
+      "title": "Voices from the Field",
+      "description": "Hear directly from the communities we serve"
+    },
+    "relatedProjects": {
+      "title": "Related Projects"
+    },
+    "contact": {
+      "title": "Get Involved",
+      "description": "Have questions? Want to volunteer? We'd love to hear from you.",
+      "phone": "Phone",
+      "email": "Email",
+      "location": "Location",
+      "volunteer": "Volunteer",
+      "contactUs": "Contact Us"
+    }
   }
 }

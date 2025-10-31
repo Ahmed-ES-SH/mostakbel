@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { directionMap } from "../constants/_website/Global";
 import ReduxProvider from "../_components/_global/_client/ReduxProvider";
@@ -7,16 +7,17 @@ import Navbar from "../_components/_global/Navbar";
 import Footer from "../_components/_global/Footer";
 import { getServerTranslation } from "../_helpers/getServerTranslation";
 import { getSharedMetadata } from "../_helpers/SharedMetadata";
+import ScrollToTop from "../_components/_global/ScrollToTop";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export async function generateMetadata() {
   const t = await getServerTranslation("mainMeta");
@@ -43,13 +44,17 @@ export default async function RootLayout({
   return (
     <html dir={directionMap[locale]} lang={locale}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased`}
       >
         <ReduxProvider>
           <ClientLayout>
             <Toaster position="top-center" richColors closeButton />
             <Navbar />
-            <div className="w-full mt-16">{children}</div>
+            <div className="w-full relative">
+              {children}
+              <ScrollToTop />
+            </div>
             <Footer />
           </ClientLayout>
         </ReduxProvider>
