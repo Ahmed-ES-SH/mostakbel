@@ -5,9 +5,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FaHeart } from "react-icons/fa";
 import { useTranslation } from "@/app/_hooks/useTranslation";
+import { ProjectType } from "../../_dashboard/_projects/_projectCard/ProjectCard";
 
 interface DonationProps {
-  project: any;
+  project: ProjectType;
 }
 
 export default function Donation({ project }: DonationProps) {
@@ -15,8 +16,10 @@ export default function Donation({ project }: DonationProps) {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
 
-  const progressPercentage = (project.raised / project.goal) * 100;
-  const remaining = project.goal - project.raised;
+  const progressPercentage =
+    (Number(project.collected_amount) / Number(project.target_amount)) * 100;
+  const remaining =
+    Number(project.target_amount) - Number(project.collected_amount);
 
   const suggestedAmounts = [25, 50, 100, 250, 500];
 
@@ -68,10 +71,10 @@ export default function Donation({ project }: DonationProps) {
           <motion.div variants={itemVariants} className="mb-8">
             <div className="flex justify-between items-center mb-4">
               <span className="text-sm font-medium text-card-foreground">
-                ${project.raised.toLocaleString()} {t.donation.raised}
+                ${project.collected_amount.toLocaleString()} {t.donation.raised}
               </span>
               <span className="text-sm font-medium text-card-foreground">
-                ${project.goal.toLocaleString()} {t.donation.goal}
+                ${project.target_amount.toLocaleString()} {t.donation.goal}
               </span>
             </div>
 

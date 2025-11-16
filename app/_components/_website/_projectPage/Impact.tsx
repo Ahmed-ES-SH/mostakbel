@@ -3,10 +3,13 @@
 import { useTranslation } from "@/app/_hooks/useTranslation";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import * as Icons from "react-icons/fa";
+import { ProjectType } from "../../_dashboard/_projects/_projectCard/ProjectCard";
+import { getIconComponent } from "@/app/_helpers/GlobalHelpers";
+import { GrStatusGood } from "react-icons/gr";
+import { useLocale } from "@/app/_hooks/useLocale";
 
 interface ImpactProps {
-  project: any;
+  project: ProjectType;
 }
 
 function AnimatedCounter({ end }: { end: number }) {
@@ -36,6 +39,7 @@ function AnimatedCounter({ end }: { end: number }) {
 
 export default function Impact({ project }: ImpactProps) {
   const t = useTranslation("projectPage");
+  const locale = useLocale();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -81,9 +85,7 @@ export default function Impact({ project }: ImpactProps) {
           </motion.p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {project.impact.map((stat: any, index: number) => {
-              const IconComponent = (Icons as any)[stat.icon];
-
+            {project.metadata.map((stat, index: number) => {
               return (
                 <motion.div
                   key={index}
@@ -91,15 +93,13 @@ export default function Impact({ project }: ImpactProps) {
                   className="bg-background rounded-lg p-6 border border-border hover:border-primary transition-colors"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    {IconComponent && (
-                      <IconComponent className="w-8 h-8 text-primary" />
-                    )}
+                    <GrStatusGood className="w-8 h-8 text-primary" />
                   </div>
                   <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
                     <AnimatedCounter end={stat.value} />
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {stat.label.en}
+                    {stat.title[locale]}
                   </p>
                 </motion.div>
               );

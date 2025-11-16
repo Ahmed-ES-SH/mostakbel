@@ -5,12 +5,14 @@ interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  disapled?: boolean;
 }
 
 export default function PaginationCompoennt({
   currentPage,
   totalPages,
   onPageChange,
+  disapled = false,
 }: PaginationProps) {
   const handlePageClick = (newPage: number) => {
     if (newPage > 0 && newPage <= totalPages) {
@@ -71,7 +73,7 @@ export default function PaginationCompoennt({
             type="button"
             onClick={() => handlePageClick(currentPage - 1)}
             className="inline-flex w-8 h-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 disabled:opacity-50"
-            disabled={currentPage === 1}
+            disabled={currentPage === 1 || disapled}
           >
             <span className="sr-only">Prev Page</span>
             <FaChevronLeft className="w-3 h-3" />
@@ -87,6 +89,7 @@ export default function PaginationCompoennt({
               </span>
             ) : (
               <button
+                disabled={disapled}
                 type="button"
                 onClick={() => handlePageClick(Number(page))}
                 className={`block w-8 h-8 rounded border text-center leading-8 font-medium transition
@@ -108,7 +111,7 @@ export default function PaginationCompoennt({
             type="button"
             onClick={() => handlePageClick(currentPage + 1)}
             className="inline-flex w-8 h-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 disabled:opacity-50"
-            disabled={currentPage === totalPages}
+            disabled={currentPage === totalPages || disapled}
           >
             <span className="sr-only">Next Page</span>
             <FaChevronRight className="w-3 h-3" />

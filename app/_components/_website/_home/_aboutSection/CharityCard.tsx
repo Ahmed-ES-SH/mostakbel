@@ -24,7 +24,8 @@ export default function CharityCard({ icon, text, color, delay }: props) {
     >
       <motion.div
         whileHover={{ scale: 1.1, rotate: 5 }}
-        className={`${color} w-10 h-10 rounded-full flex items-center justify-center`}
+        style={{ backgroundColor: `${color}` }}
+        className={` w-10 h-10 rounded-full flex items-center justify-center`}
       >
         <Icon className="text-white text-lg" />
       </motion.div>

@@ -4,34 +4,68 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "../../../_helpers/fixLeafletIcon"; // 👈 important fix
+import "../../../_helpers/fixLeafletIcon";
 
-export function MapSection() {
+type Location = {
+  address: string;
+  lat: number;
+  lng: number;
+};
+
+export function MapSection({ location }: { location: Location }) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
 
-  useEffect(() => {
-    if (!mapRef.current || mapInstanceRef.current) return;
+  // موقع افتراضي (وسط سوريا)
+  const DEFAULT_LOCATION = {
+    lat: 34.8021,
+    lng: 38.9968,
+    address: "Syria (Default Center)",
+  };
 
-    const map = L.map(mapRef.current).setView([40.7128, -74.006], 13);
+  // التحقق من صحة البيانات
+  const validLocation =
+    location &&
+    typeof location.lat === "number" &&
+    typeof location.lng === "number" &&
+    !isNaN(location.lat) &&
+    !isNaN(location.lng)
+      ? location
+      : DEFAULT_LOCATION;
+
+  useEffect(() => {
+    if (!mapRef.current) return;
+
+    // عند تغيير الموقع يتم إعادة إنشاء الخريطة
+    if (mapInstanceRef.current) {
+      mapInstanceRef.current.remove();
+      mapInstanceRef.current = null;
+    }
+
+    const map = L.map(mapRef.current).setView(
+      [validLocation.lat, validLocation.lng],
+      13
+    );
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "© OpenStreetMap contributors",
       maxZoom: 19,
     }).addTo(map);
 
-    L.marker([40.7128, -74.006])
+    L.marker([validLocation.lat, validLocation.lng])
       .addTo(map)
-      .bindPopup("Our Location")
+      .bindPopup(validLocation.address)
       .openPopup();
 
     mapInstanceRef.current = map;
 
     return () => {
-      map.remove();
-      mapInstanceRef.current = null;
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
     };
-  }, []);
+  }, [validLocation.lat, validLocation.lng]);
 
   return (
     <motion.div

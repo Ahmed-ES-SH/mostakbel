@@ -7,12 +7,16 @@ import { motion } from "framer-motion";
 import { useLocale } from "@/app/_hooks/useLocale";
 import { mockNews } from "./mockNews";
 import { NewsCard } from "./NewsCard";
+import { formatDate } from "@/app/_helpers/GlobalHelpers";
 
-export default function NewsSlider() {
+interface props {
+  data: News[];
+}
+
+export default function NewsSlider({ data }: props) {
   const locale = useLocale();
 
-  // Get latest articles (first 6 articles as latest)
-  const latestArticles = useMemo(() => mockNews.slice(0, 6), []);
+  console.log(data);
 
   return (
     <>
@@ -49,22 +53,26 @@ export default function NewsSlider() {
               }}
               className="pb-12"
             >
-              {latestArticles.map((article) => (
-                <SwiperSlide key={article.id}>
-                  <motion.div
-                    whileHover={{ y: -5 }}
-                    transition={{ duration: 0.2 }}
-                    className="h-full"
-                  >
-                    <NewsCard
-                      title={article.title}
-                      description={article.description}
-                      image={article.image}
-                      date={article.date}
-                    />
-                  </motion.div>
-                </SwiperSlide>
-              ))}
+              {data &&
+                Array.isArray(data) &&
+                data.length > 0 &&
+                data.map((article) => (
+                  <SwiperSlide key={article.id}>
+                    <motion.div
+                      whileHover={{ y: -5 }}
+                      transition={{ duration: 0.2 }}
+                      className="h-full"
+                    >
+                      <NewsCard
+                        id={article.id}
+                        title={article.title}
+                        description={article.content}
+                        image={article.image}
+                        date={formatDate(article.created_at)}
+                      />
+                    </motion.div>
+                  </SwiperSlide>
+                ))}
             </Swiper>
 
             {/* Custom Navigation */}

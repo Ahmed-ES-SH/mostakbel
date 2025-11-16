@@ -3,6 +3,39 @@
     "title": "Dialogue and Civil Peace Center - Charity Organization",
     "description": "A charitable platform dedicated to promoting dialogue and civil peace in Syria, supporting humanitarian and development projects that strengthen community cooperation and solidarity."
   },
+  "centerBranchesMeta": {
+    "title": "Our Centers & Branches — Dialogue and Civil Peace Center",
+    "description": "Find our regional centers and branches across Syria providing humanitarian aid, dialogue programs, and community support. Contact details, opening hours, and available services."
+  },
+  "blogMeta": {
+    "title": "Blog — Dialogue and Civil Peace Center",
+    "description": "Read news, project updates, and expert articles on community development, reconciliation, and civil peace initiatives implemented by our center in Syria."
+  },
+  "aboutMeta": {
+    "title": "About Us — Dialogue and Civil Peace Center",
+    "description": "Learn about our mission, vision, team and history. We run humanitarian and development projects aimed at strengthening social cohesion and community resilience in Syria."
+  },
+  "newsMeta": {
+    "title": "News & Press — Dialogue and Civil Peace Center",
+    "description": "Latest news, press releases and announcements about our humanitarian projects, events and community initiatives across Syria."
+  },
+  "ourwrokMeta": {
+    "title": "Our Work — Programs & Projects",
+    "description": "Overview of our programs: dialogue initiatives, education and livelihood support, emergency relief and community development projects that promote lasting peace."
+  },
+
+  "projectMeta": {
+    "title": "Project Details",
+    "description": "Information about the humanitarian and development project, including goals, impact, activities, and project outcomes."
+  },
+  "articleMeta": {
+    "title": "Article",
+    "description": "A detailed article covering insights, analysis, and content related to civil peace, community support, and development initiatives."
+  },
+  "newMeta": {
+    "title": "News",
+    "description": "Latest updates, announcements, and press information related to our humanitarian and community projects."
+  },
 
   "hero": {
     "discover": "Discover Now",
@@ -249,5 +282,26 @@
     "published": "Published",
     "pagination": "Page",
     "of": "of"
+  },
+
+  "teamSiwper": {
+    "title": "Our Specialized Team",
+    "subtitle": "Meet the center members who work to serve beneficiaries and support the charitable association’s initiatives with the highest levels of professionalism and commitment."
+  },
+
+  "soloNewsPage": {
+    "copied_to_clipboard": "Link copied to clipboard",
+    "likes": "Likes",
+    "liked": "Liked",
+    "like": "Like",
+    "share": "Share",
+    "sidebar": {
+      "article_stats": "Article Statistics",
+      "views": "Views",
+      "shares": "Shares",
+      "likes": "Likes",
+      "categories": "Categories",
+      "tags": "Tags"
+    }
   }
 }

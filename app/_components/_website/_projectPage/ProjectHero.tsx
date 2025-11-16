@@ -4,22 +4,26 @@ import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaTag } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/app/_hooks/useTranslation";
+import { ProjectType } from "../../_dashboard/_projects/_projectCard/ProjectCard";
+import Img from "../../_global/Img";
+import { useLocale } from "@/app/_hooks/useLocale";
 
 interface HeroProps {
-  project: any;
+  project: ProjectType;
 }
 
 export default function ProjectHero({ project }: HeroProps) {
+  const locale = useLocale();
   const t = useTranslation("projectPage");
-  const tProject = (key: string) => project[key]?.en || project[key]?.ar || "";
 
   return (
     <section className="relative h-screen md:h-screen flex flex-col justify-end overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={project.mainImage || "/placeholder.svg"}
-          alt={tProject("title")}
+        <Img
+          src={project.image ?? "/noImage.png"}
+          errorSrc="/noImage.png"
+          alt={project.title}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
@@ -41,11 +45,17 @@ export default function ProjectHero({ project }: HeroProps) {
         >
           <div className="flex items-center gap-2 text-white">
             <FaMapMarkerAlt className="w-4 h-4" />
-            <span className="text-sm md:text-base">{tProject("location")}</span>
+            <span className="text-sm md:text-base">
+              {project?.location?.address ?? ""}
+            </span>
           </div>
           <div className="flex items-center gap-2 text-white">
             <FaTag className="w-4 h-4" />
-            <span className="text-sm md:text-base">{tProject("category")}</span>
+            <span className="text-sm md:text-base">
+              {locale == "ar"
+                ? project.category.title_ar
+                : project.category.title_en}
+            </span>
           </div>
         </motion.div>
 
@@ -56,7 +66,7 @@ export default function ProjectHero({ project }: HeroProps) {
           transition={{ delay: 0.3 }}
           className="text-4xl md:text-6xl font-bold text-white mb-6 md:mb-8 max-w-3xl text-balance"
         >
-          {tProject("title")}
+          {project.title}
         </motion.h1>
 
         {/* Description */}
@@ -66,7 +76,7 @@ export default function ProjectHero({ project }: HeroProps) {
           transition={{ delay: 0.4 }}
           className="text-base md:text-xl text-gray-100 mb-8 md:mb-12 max-w-2xl text-pretty"
         >
-          {tProject("description")}
+          {project.description}
         </motion.p>
 
         {/* CTA Buttons */}

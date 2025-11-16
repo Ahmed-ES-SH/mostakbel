@@ -2,23 +2,47 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { FaSearch } from "react-icons/fa";
 import { useTranslation } from "@/app/_hooks/useTranslation";
+import { useRouter, useSearchParams } from "next/navigation";
 
-interface BlogSearchProps {
-  onSearch: (query: string) => void;
-}
-
-export default function BlogSearch({ onSearch }: BlogSearchProps) {
+export default function BlogSearch() {
   const t = useTranslation("blog");
   const [query, setQuery] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // احصل على قيمة البحث الحالية من معاملات البحث
+    const currentQuery = searchParams.get("query") || "";
+    setQuery(currentQuery);
+  }, [searchParams]);
+
+  useEffect(() => {
+    // تأجيل تحديث معاملات البحث حتى يتوقف المستخدم عن الكتابة لمدة 700 مللي ثانية
+    const delayDebounceFn = setTimeout(() => {
+      // إنشاء كائن URLSearchParams جديد من معاملات البحث الحالية
+      const params = new URLSearchParams(searchParams.toString());
+
+      if (query) {
+        params.set("query", query);
+      } else {
+        params.delete("query");
+      }
+
+      // تحديث الرابط دون إعادة تحميل الصفحة
+      router.push(`?${params.toString()}`, { scroll: false });
+    }, 700);
+
+    // تنظيف المؤقت عند كل تغيير في query
+    return () => clearTimeout(delayDebounceFn);
+  }, [query, router, searchParams]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
-    onSearch(value);
   };
 
   return (

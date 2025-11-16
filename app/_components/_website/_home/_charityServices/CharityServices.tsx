@@ -32,6 +32,12 @@ export default function CharityServices({ data }: props) {
 
   const { services, texts } = data;
 
+  const styles: any = {
+    0: "size-12",
+    1: "size-12 text-green-500",
+    2: "size-12 text-red-500",
+  };
+
   return (
     <section className="relative py-20 bg-[url('/website/paper-bg.png')] bg-cover bg-center">
       {/* overlay */}
@@ -62,7 +68,7 @@ export default function CharityServices({ data }: props) {
           {services &&
             Array.isArray(services) &&
             services.length > 0 &&
-            services.map((service, i) => {
+            services.map((service, i: number) => {
               const Icon = getIconComponent(service.icon);
               return (
                 <motion.div
@@ -72,9 +78,7 @@ export default function CharityServices({ data }: props) {
                   className="bg-white rounded-3xl group relative shadow-md p-8 flex flex-col items-center justify-between hover:shadow-lg transition-shadow"
                 >
                   <div className="flex items-start justify-center pt-3 absolute -top-[25%] left-1/2 -translate-x-1/2 rounded-t-full w-40 h-40 mb-6 -z-2">
-                    <Icon
-                      className={`order-1 relative ${service.icon_style}`}
-                    />
+                    <Icon className={`order-1 relative ${styles[i]}`} />
                     <div className="absolute top-0 left-0 w-full h-1/2 bg-white outline-20 outline-primary-color rounded-t-full"></div>
                   </div>
                   <div className="flex flex-col items-center z-3 relative">

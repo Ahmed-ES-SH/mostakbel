@@ -6,19 +6,11 @@ import { Card } from "@/components/ui/card";
 import { useLocale } from "@/app/_hooks/useLocale";
 import { useTranslation } from "@/app/_hooks/useTranslation";
 import LocaleLink from "../../_global/LocaleLink";
-import { formatTitle } from "@/app/_helpers/GlobalHelpers";
-
-interface RelatedArticle {
-  id: string;
-  title: string;
-  excerpt: string;
-  image: string;
-  category: string;
-  date: string;
-}
+import { formatDate, formatTitle } from "@/app/_helpers/GlobalHelpers";
+import { ArticleType } from "../../_dashboard/_articles/types";
 
 interface RelatedArticlesProps {
-  articles: RelatedArticle[];
+  articles: ArticleType[];
 }
 
 export function RelatedArticles({ articles }: RelatedArticlesProps) {
@@ -79,7 +71,9 @@ export function RelatedArticles({ articles }: RelatedArticlesProps) {
               </div>
               <div className="p-4">
                 <div className="mb-2 inline-block rounded-full bg-primary/10 px-2 py-1 text-xs font-semibold text-primary">
-                  {article.category}
+                  {locale == "ar"
+                    ? article.category.title_ar
+                    : article.category.title_en}
                 </div>
                 <LocaleLink
                   href={`/blog/${formatTitle(article.title)}?articleId=${
@@ -100,7 +94,7 @@ export function RelatedArticles({ articles }: RelatedArticlesProps) {
                   {article.excerpt}
                 </p>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span>{article.date}</span>
+                  <span>{formatDate(article.created_at)}</span>
                 </div>
               </div>
             </Card>

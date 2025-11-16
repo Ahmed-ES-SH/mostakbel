@@ -6,51 +6,15 @@ import { Navigation, Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useLocale } from "@/app/_hooks/useLocale";
+import { Category } from "../../_dashboard/_ProjectPage/type";
+import CategoryCard from "./CategoryCard";
 
-// Mock data for categories
-const mockCategories = [
-  {
-    title_en: "Technology",
-    title_ar: "تكنولوجيا",
-    image:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop",
-  },
-  {
-    title_en: "Science",
-    title_ar: "علوم",
-    image:
-      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=300&h=200&fit=crop",
-  },
-  {
-    title_en: "Health",
-    title_ar: "صحة",
-    image:
-      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=300&h=200&fit=crop",
-  },
-  {
-    title_en: "Business",
-    title_ar: "أعمال",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop",
-  },
-  {
-    title_en: "Entertainment",
-    title_ar: "ترفيه",
-    image:
-      "https://images.unsplash.com/photo-1489599809505-f2b4efca97e4?w=300&h=200&fit=crop",
-  },
-  {
-    title_en: "Sports",
-    title_ar: "رياضة",
-    image:
-      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=300&h=200&fit=crop",
-  },
-];
+interface props {
+  categories: Category[];
+}
 
-export default function NewsCategoriesSection() {
+export default function NewsCategoriesSection({ categories }: props) {
   const locale = useLocale();
-
-  const [selectedCategory, setSelectedCategory] = useState("all");
 
   return (
     <>
@@ -66,7 +30,7 @@ export default function NewsCategoriesSection() {
           </h2>
 
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={16}
             slidesPerView={2}
             navigation={{
@@ -79,41 +43,20 @@ export default function NewsCategoriesSection() {
               1024: { slidesPerView: 5 },
               1280: { slidesPerView: 6 },
             }}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
             className="px-12"
           >
-            {mockCategories.map((category, index) => (
-              <SwiperSlide key={index}>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`w-full p-4 rounded-lg border-2 transition-colors ${
-                    selectedCategory === category.title_en
-                      ? "border-blue-500 bg-blue-50"
-                      : "border-gray-200 bg-gray-50 hover:border-gray-300"
-                  }`}
-                  onClick={() =>
-                    setSelectedCategory(
-                      selectedCategory === category.title_en
-                        ? "all"
-                        : category.title_en
-                    )
-                  }
-                >
-                  <div className="aspect-square mb-3 overflow-hidden rounded-md">
-                    <Img
-                      src={category.image}
-                      alt={
-                        locale === "ar" ? category.title_ar : category.title_en
-                      }
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 text-sm">
-                    {locale === "ar" ? category.title_ar : category.title_en}
-                  </h3>
-                </motion.button>
-              </SwiperSlide>
-            ))}
+            {categories &&
+              categories.length > 0 &&
+              categories.map((category, index) => (
+                <SwiperSlide key={index}>
+                  <CategoryCard
+                    category={category}
+                    locale={locale}
+                    key={`news-category-${index}`}
+                  />
+                </SwiperSlide>
+              ))}
           </Swiper>
 
           {/* Categories Navigation */}

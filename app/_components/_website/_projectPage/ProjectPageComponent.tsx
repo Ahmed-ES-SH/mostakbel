@@ -7,25 +7,26 @@ import Overview from "./ProjectOverview";
 import Impact from "./Impact";
 import Gallery from "./Gallery";
 import Donation from "./Donation";
-import Team from "./Team";
-import Testimonials from "./Testimonials";
-import RelatedProjects from "./RelatedProjects";
-import Contact from "./Conntact";
-import { mockProject } from "./mockProject";
+import { ProjectType } from "../../_dashboard/_projects/_projectCard/ProjectCard";
+import { TeamMember, TeamSwiper } from "../_about/TeamSwiper";
 
-export default function ProjectPageCompoen() {
+interface props {
+  project: ProjectType;
+  teamData: TeamMember[];
+}
+
+export default function ProjectPageCompoen({ project, teamData }: props) {
   const locale = useLocale();
 
   return (
     <main className="mb-10" dir={directionMap[locale]}>
-      <ProjectHero project={mockProject} />
-      <Overview project={mockProject} />
-      <Impact project={mockProject} />
-      <Gallery project={mockProject} />
-      <Donation project={mockProject} />
-      <Team project={mockProject} />
-      <Testimonials project={mockProject} />
-      <RelatedProjects project={mockProject} />
+      <ProjectHero project={project} />
+      <Overview project={project} />
+      <Impact project={project} />
+      <Gallery project={project} />
+      <Donation project={project} />
+      <TeamSwiper teamMembers={teamData} />
+      {/* <RelatedProjects project={mockProject} /> */}
     </main>
   );
 }

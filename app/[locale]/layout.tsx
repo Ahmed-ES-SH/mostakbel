@@ -5,11 +5,11 @@ import ReduxProvider from "../_components/_global/_client/ReduxProvider";
 import ClientLayout from "../_components/_global/_client/ClientLayout";
 import Navbar from "../_components/_global/Navbar";
 import Footer from "../_components/_global/Footer";
-import { getServerTranslation } from "../_helpers/getServerTranslation";
 import { getSharedMetadata } from "../_helpers/SharedMetadata";
 import ScrollToTop from "../_components/_global/ScrollToTop";
 import ThemeProvider from "../_components/_website/ThemeProvider";
 import FetchData from "../_helpers/FetchData";
+import { getServerTranslation } from "../_helpers/serverTranslation";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -22,7 +22,7 @@ import FetchData from "../_helpers/FetchData";
 // });
 
 export async function generateMetadata() {
-  const t = await getServerTranslation("mainMeta");
+  const t = await getServerTranslation("ar", "mainMeta");
   const sharedMetadata = await getSharedMetadata(t.title, t.description);
 
   return {
@@ -44,6 +44,12 @@ export default async function RootLayout({
   const socialData = await FetchData(`/social-contact-info`, false);
   return (
     <html dir={directionMap[locale as "en" | "ar"]} lang={locale}>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className={`antialiased`}
@@ -53,7 +59,7 @@ export default async function RootLayout({
             <ClientLayout>
               <Toaster position="top-center" richColors closeButton />
               <Navbar socialData={socialData} />
-              <div className="w-full relative">
+              <div className="w-full min-h-screen relative">
                 {children}
                 <ScrollToTop />
               </div>

@@ -8,6 +8,7 @@ import Img from "../Img";
 import { links } from "@/app/constants/_website/navbar";
 import MobileDropLinks from "./MobileDropLinks";
 import { useAppSelector } from "@/app/redux/hooks";
+import { toast } from "sonner";
 
 interface props {
   hideWhitePart: boolean;
@@ -17,6 +18,10 @@ export default function BottomNavbar({ hideWhitePart }: props) {
   const locale = useLocale();
   const pathName = usePathname();
   const { logoSrc } = useAppSelector((state) => state.variables);
+
+  const donateNow = () => {
+    toast.warning("عفوا ستكون هذة الميزة متاحه قريبا انشاء الله .");
+  };
 
   return (
     <div
@@ -61,7 +66,10 @@ export default function BottomNavbar({ hideWhitePart }: props) {
       </div>
       <div className="flex items-center gap-2">
         {/* button */}
-        <button className="relative hidden  whitespace-nowrap max-md:text-sm group overflow-hidden bg-transparent hover:bg-primary duration-200 text-white py-2 md:py-4 px-4 md:px-8 rounded-full md:flex items-center justify-center">
+        <button
+          onClick={donateNow}
+          className="relative hidden  whitespace-nowrap max-md:text-sm group overflow-hidden bg-transparent hover:bg-primary duration-200 text-white py-2 md:py-4 px-4 md:px-8 rounded-full md:flex items-center justify-center"
+        >
           <div className="flex items-center gap-2 relative order-1">
             <IoMdHeart />
             <p className="">{locale == "en" ? "Donate Now" : "تبرع الأن"}</p>

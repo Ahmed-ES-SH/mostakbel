@@ -11,6 +11,7 @@ interface props {
   loading?: "lazy" | "eager" | undefined;
   priority?: boolean;
   onLoad?: () => void;
+  onClick?: (image: any) => void;
   onError?: (e: any) => void;
   errorSrc?: string;
   ref?: any;
@@ -25,6 +26,7 @@ export default function Img({
   loading = "lazy",
   onLoad,
   onError,
+  onClick,
   errorSrc,
   ref,
 }: props) {
@@ -45,6 +47,7 @@ export default function Img({
 
   return (
     <img
+      onClick={onClick}
       src={imageSrc}
       alt={alt}
       className={className}

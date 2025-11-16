@@ -3,14 +3,15 @@
 import { useTranslation } from "@/app/_hooks/useTranslation";
 import { motion } from "framer-motion";
 import { FaCalendarAlt, FaClock } from "react-icons/fa";
+import { ProjectType } from "../../_dashboard/_projects/_projectCard/ProjectCard";
+import { formatDate } from "@/app/_helpers/GlobalHelpers";
 
 interface OverviewProps {
-  project: any;
+  project: ProjectType;
 }
 
 export default function Overview({ project }: OverviewProps) {
   const t = useTranslation("projectPage");
-  const tProject = (key: string) => project[key]?.en || project[key]?.ar || "";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -53,7 +54,7 @@ export default function Overview({ project }: OverviewProps) {
             {/* Description */}
             <motion.div variants={itemVariants} className="md:col-span-2">
               <p className="text-base md:text-lg text-foreground/80 mb-6 leading-relaxed text-pretty">
-                {tProject("longDescription")}
+                {project.description}
               </p>
             </motion.div>
 
@@ -67,7 +68,7 @@ export default function Overview({ project }: OverviewProps) {
                   </span>
                 </div>
                 <p className="font-medium text-foreground">
-                  {new Date(project.startDate).toLocaleDateString("en-US")}
+                  {formatDate(project.start_date)}
                 </p>
               </div>
 
@@ -79,7 +80,7 @@ export default function Overview({ project }: OverviewProps) {
                   </span>
                 </div>
                 <p className="font-medium text-foreground">
-                  {new Date(project.endDate).toLocaleDateString("en-US")}
+                  {formatDate(project.completed_at)}
                 </p>
               </div>
 
@@ -90,9 +91,7 @@ export default function Overview({ project }: OverviewProps) {
                     {t.overview.status}
                   </span>
                 </div>
-                <p className="font-medium text-secondary">
-                  {tProject("status")}
-                </p>
+                <p className="font-medium text-secondary">{project.status}</p>
               </div>
             </motion.div>
           </div>

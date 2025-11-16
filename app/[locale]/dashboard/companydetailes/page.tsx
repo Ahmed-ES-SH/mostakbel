@@ -9,7 +9,7 @@ import Img from "@/app/_components/_global/Img";
 import PlatformCustomizer from "@/app/_components/_dashboard/PlatformCustomizer";
 import { ImageType } from "@/app/_helpers/GlobalHelpers";
 
-interface SectionData {
+export interface SectionData {
   id: string;
   title: string;
   placeholder: string;

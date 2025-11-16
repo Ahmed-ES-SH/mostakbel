@@ -5,8 +5,14 @@ import { ContactInfoCard } from "../_contactus/ContactInfoCard";
 import { MapSection } from "../_contactus/MapSection";
 import { FiHelpCircle, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { useTranslation } from "@/app/_hooks/useTranslation";
+import { CenterBranchType } from "./CenterBranchesComponent";
+import { truncateContent } from "@/app/_helpers/GlobalHelpers";
 
-export default function CenterBranch() {
+interface props {
+  branch: CenterBranchType;
+}
+
+export default function CenterBranch({ branch }: props) {
   const translations = useTranslation("contact");
 
   const containerVariants = {
@@ -26,7 +32,7 @@ export default function CenterBranch() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="c-container mx-auto  lg:mb-40 px-4 sm:px-6 lg:px-8"
+        className="c-container  mx-auto py-20 border-t px-4 sm:px-6 lg:px-8"
       >
         <div className="w-full">
           {/* Right Column */}
@@ -37,19 +43,19 @@ export default function CenterBranch() {
                 <ContactInfoCard
                   icon={<FiMapPin size={24} />}
                   title={translations.address}
-                  value={translations.addressValue}
+                  value={truncateContent(branch.location.address ?? "", 40)}
                   delay={0}
                 />
                 <ContactInfoCard
                   icon={<FiPhone size={24} />}
                   title={translations.phone}
-                  value={translations.phoneValue}
+                  value={branch.phone ?? ""}
                   delay={0.1}
                 />
                 <ContactInfoCard
                   icon={<FiMail size={24} />}
                   title={translations.email}
-                  value={translations.emailValue}
+                  value={branch.email ?? ""}
                   delay={0.2}
                 />
                 <ContactInfoCard
@@ -61,7 +67,7 @@ export default function CenterBranch() {
               </div>
 
               {/* Map */}
-              <MapSection />
+              <MapSection location={branch.location ?? null} />
             </div>
           </div>
         </div>

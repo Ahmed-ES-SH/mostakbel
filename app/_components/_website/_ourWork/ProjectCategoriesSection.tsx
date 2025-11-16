@@ -1,46 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  FaGraduationCap,
-  FaUsers,
-  FaHandHolding,
-  FaHeartPulse,
-  FaEarthAfrica,
-} from "react-icons/fa6";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/app/_hooks/useTranslation";
+import { Category } from "../../_dashboard/_ProjectPage/type";
+import { useLocale } from "@/app/_hooks/useLocale";
+import { formatTitle, getIconComponent } from "@/app/_helpers/GlobalHelpers";
+import LocaleLink from "../../_global/LocaleLink";
 
-export function ProjectCategoriesSection() {
+interface props {
+  categories: Category[];
+}
+
+export function ProjectCategoriesSection({ categories }: props) {
   const t = useTranslation("categories");
-
-  const categories = [
-    {
-      icon: FaGraduationCap,
-      title: t.education,
-      description: t.educationDesc,
-    },
-    {
-      icon: FaUsers,
-      title: t.community,
-      description: t.communityDesc,
-    },
-    {
-      icon: FaHandHolding,
-      title: t.peacebuilding,
-      description: t.peacebuildingDesc,
-    },
-    {
-      icon: FaHeartPulse,
-      title: t.health,
-      description: t.healthDesc,
-    },
-    {
-      icon: FaEarthAfrica,
-      title: t.environment,
-      description: t.environmentDesc,
-    },
-  ];
+  const locale = useLocale();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -77,24 +51,45 @@ export function ProjectCategoriesSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
           {categories.map((category, index) => {
-            const Icon = category.icon;
+            const Icon = getIconComponent(category.icon_name);
             return (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="p-8 h-full hover:shadow-lg transition-shadow cursor-pointer group">
-                  <Icon className="w-10 h-10 text-stone-900 mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-semibold text-stone-900 mb-3">
-                    {category.title}
-                  </h3>
-                  <p className="text-stone-600">{category.description}</p>
-                </Card>
-              </motion.div>
+              <LocaleLink
+                href={`/ourwork/categories/${formatTitle(
+                  locale == "ar" ? category.title_ar : category.title_en
+                )}?projectCategoryId=${category.id}`}
+              >
+                <motion.div key={index} variants={itemVariants}>
+                  <Card
+                    className="p-8 h-full shadow-sm hover:text-white text-stone-900 transition-shadow cursor-pointer group duration-300"
+                    style={{
+                      backgroundColor: "#fff", // لون افتراضي
+                      transition: ".3",
+                    }}
+                    onMouseEnter={(e) => {
+                      (
+                        e.currentTarget as HTMLDivElement
+                      ).style.backgroundColor = category.bg_color;
+                    }}
+                    onMouseLeave={(e) => {
+                      (
+                        e.currentTarget as HTMLDivElement
+                      ).style.backgroundColor = "#fff";
+                    }}
+                  >
+                    <Icon className="w-10 h-10  mb-4 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-xl font-semibold  mb-3">
+                      {locale == "ar" ? category.title_ar : category.title_en}
+                    </h3>
+                  </Card>
+                </motion.div>
+              </LocaleLink>
             );
           })}
         </motion.div>

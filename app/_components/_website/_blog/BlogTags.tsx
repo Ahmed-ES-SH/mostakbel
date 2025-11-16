@@ -3,25 +3,24 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "@/app/_hooks/useTranslation";
-import { allTags } from "./mockArticles";
+import { useState } from "react";
 
 interface BlogTagsProps {
-  selectedTags: string[];
-  onSelectTag: (tag: string) => void;
+  tags: Tag[];
 }
 
-export default function BlogTags({ selectedTags, onSelectTag }: BlogTagsProps) {
+export default function BlogTags({ tags }: BlogTagsProps) {
   const t = useTranslation("blog");
-  // Get random 8 tags for display
-  const displayTags = allTags.sort(() => Math.random() - 0.5).slice(0, 8);
+
+  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 max-h-32 overflow-x-hidden overflow-y-auto">
       <h3 className="font-semibold text-lg">{t.tags}</h3>
       <div className="flex flex-wrap gap-2">
-        {displayTags.map((tag, index) => (
+        {tags.map((tag, index) => (
           <motion.div
-            key={tag}
+            key={`tag-${tag.id}`}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.05 }}
@@ -30,9 +29,8 @@ export default function BlogTags({ selectedTags, onSelectTag }: BlogTagsProps) {
             <Badge
               variant={selectedTags.includes(tag) ? "default" : "outline"}
               className="cursor-pointer"
-              onClick={() => onSelectTag(tag)}
             >
-              {tag}
+              {tag.slug}
             </Badge>
           </motion.div>
         ))}

@@ -1,15 +1,20 @@
 // Article Card Component
 "use client";
 
+import { ArticleType } from "@/app/_components/_dashboard/_articles/types";
 import LocaleLink from "@/app/_components/_global/LocaleLink";
-import { formatTitle } from "@/app/_helpers/GlobalHelpers";
+import {
+  formatDate,
+  formatTitle,
+  truncateContent,
+} from "@/app/_helpers/GlobalHelpers";
 import { useLocale } from "@/app/_hooks/useLocale";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaArrowRight, FaCalendarAlt, FaTag } from "react-icons/fa";
 
 interface props {
-  article: any;
+  article: ArticleType;
   readMore: string;
 }
 
@@ -27,20 +32,18 @@ export default function ArticleCard({ article, readMore }: props) {
       transition={{ duration: 0.3 }}
     >
       <div className="relative h-64 overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={isHovered ? "hover" : "default"}
-            src={isHovered ? article.hoverImage : article.image}
-            alt={article.title[locale]}
-            className="w-full h-full object-cover"
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: isHovered ? 1.1 : 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            onLoad={() => setImageLoaded(true)}
-          />
-        </AnimatePresence>
+        <motion.img
+          src={article.image}
+          alt={article.title}
+          className="w-full h-full object-cover"
+          animate={{
+            scale: isHovered ? 1.1 : 1,
+          }}
+          transition={{ duration: 0.5 }}
+          onLoad={() => setImageLoaded(true)}
+        />
 
+        {/* Overlay ثابت يظهر عند التمرير */}
         <motion.div
           className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"
           initial={{ opacity: 0 }}
@@ -61,7 +64,7 @@ export default function ArticleCard({ article, readMore }: props) {
             }`}
           >
             <FaCalendarAlt className="text-orange-500" />
-            <span>{article.date[locale]}</span>
+            <span>{formatDate(article.created_at)}</span>
           </div>
           <div
             className={`flex items-center gap-2 text-gray-600 ${
@@ -69,22 +72,29 @@ export default function ArticleCard({ article, readMore }: props) {
             }`}
           >
             <FaTag className="text-orange-500" />
-            <span>{article.category[locale]}</span>
+            <span>
+              {locale == "ar"
+                ? article.category.title_ar
+                : article.category.title_en}
+            </span>
           </div>
         </div>
 
-        <h3
-          className={`text-xl font-bold text-gray-900 mb-4 flex-1 ${
-            locale === "ar" ? "text-right" : "text-left"
-          }`}
-        >
-          {article.title[locale]}
-        </h3>
+        {/* content */}
+        <div className="flex-1 space-y-4">
+          <h3
+            className={`text-xl font-bold text-gray-900  ${
+              locale === "ar" ? "text-right" : "text-left"
+            }`}
+          >
+            {article.title}
+          </h3>
+
+          <p>{truncateContent(article.excerpt, 40)}</p>
+        </div>
 
         <LocaleLink
-          href={`/blog/${formatTitle(article.title[locale])}?articleId=${
-            article.id
-          }`}
+          href={`/blog/${formatTitle(article.title)}?articleId=${article.id}`}
         >
           <motion.button
             className={`flex items-center w-fit gap-2 bg-teal-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-teal-800 transition-colors ${

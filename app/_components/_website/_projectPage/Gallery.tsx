@@ -5,14 +5,17 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectFade } from "swiper/modules";
 import { useTranslation } from "@/app/_hooks/useTranslation";
+import { ProjectType } from "../../_dashboard/_projects/_projectCard/ProjectCard";
+import Img from "../../_global/Img";
+import { ProjectImage } from "../../_dashboard/_ProjectPage/type";
 
 interface GalleryProps {
-  project: any;
+  project: ProjectType;
 }
 
 export default function Gallery({ project }: GalleryProps) {
   const t = useTranslation("projectPage");
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<ProjectImage | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -61,10 +64,11 @@ export default function Gallery({ project }: GalleryProps) {
               pagination={{ clickable: true }}
               className="w-full aspect-video"
             >
-              {project.gallery.map((image: string, index: number) => (
+              {project.images.map((image: any, index: number) => (
                 <SwiperSlide key={index}>
-                  <img
-                    src={image || "/placeholder.svg"}
+                  <Img
+                    src={image.image_path ?? "/noImage.png"}
+                    errorSrc="/noImage.png"
                     alt={`Gallery ${index + 1}`}
                     className="w-full h-full object-cover cursor-pointer"
                     onClick={() => setSelectedImage(image)}
@@ -79,10 +83,10 @@ export default function Gallery({ project }: GalleryProps) {
             variants={itemVariants}
             className="grid grid-cols-2 md:grid-cols-4 gap-4"
           >
-            {project.gallery.map((image: string, index: number) => (
+            {project.images.map((image: any, index: number) => (
               <motion.img
                 key={index}
-                src={image}
+                src={image.image_path ?? "/noImage.png"}
                 alt={`Thumbnail ${index + 1}`}
                 className="w-full h-32 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity border border-border"
                 onClick={() => setSelectedImage(image)}
@@ -97,13 +101,13 @@ export default function Gallery({ project }: GalleryProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-black/80 backdrop-blur-md z-9999 flex items-center justify-center p-4"
               onClick={() => setSelectedImage(null)}
             >
               <motion.img
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
-                src={selectedImage}
+                src={selectedImage.image_path}
                 alt="Full size"
                 className="max-w-4xl max-h-screen object-contain"
               />
