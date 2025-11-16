@@ -8,8 +8,13 @@ import ArticleCard from "./ArticleCard";
 import NewsHeader from "./NewsHeader";
 import { useLocale } from "@/app/_hooks/useLocale";
 import { articlesData } from "./mockArticles";
+import { ArticleType } from "@/app/_components/_dashboard/_articles/types";
 
-export default function NewsArticlesSection() {
+interface props {
+  articles: ArticleType[];
+}
+
+export default function NewsArticlesSection({ articles }: props) {
   const locale = useLocale();
   const [isHovered, setIsHovered] = useState(false);
   const swiperRef = useRef<any | null>(null);
@@ -42,14 +47,17 @@ export default function NewsArticlesSection() {
             className="pb-12"
             dir={locale === "ar" ? "rtl" : "ltr"}
           >
-            {articlesData.articles.map((article) => (
-              <SwiperSlide key={article.id}>
-                <ArticleCard
-                  article={article}
-                  readMore={articlesData.readMore[locale]}
-                />
-              </SwiperSlide>
-            ))}
+            {articles &&
+              Array.isArray(articles) &&
+              articles.length > 0 &&
+              articles.map((article) => (
+                <SwiperSlide key={article.id}>
+                  <ArticleCard
+                    article={article}
+                    readMore={articlesData.readMore[locale]}
+                  />
+                </SwiperSlide>
+              ))}
           </Swiper>
 
           {/* Always render buttons (so refs / event handlers exist), but hide them when not hovered.

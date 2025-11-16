@@ -79,7 +79,7 @@ export default function ContactPageComponent() {
 
             <div className="flex items-center justify-between max-lg:flex-col max-lg:items-start w-full relative gap-4">
               {/* Contact Form */}
-              <ContactForm translations={translations} />
+              <ContactForm />
               <div className="flex-1" />
               <div className="lg:w-[750px] w-full lg:absolute lg:top-0 rtl:lg:-left-[5%] ltr:lg:-right-[2%]">
                 <Img src="/website/contact-1.png" className="w-[900px]" />

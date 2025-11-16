@@ -8,6 +8,7 @@ interface LocaleLinkProps {
   className?: string;
   href: string;
   onClick?: () => void;
+  target?: string;
 }
 
 export default function LocaleLink({
@@ -15,6 +16,7 @@ export default function LocaleLink({
   className,
   href,
   onClick,
+  target,
 }: LocaleLinkProps) {
   const locale = useLocale();
   const formattedHref = `/${locale}/${href}`.replace(/\/+/g, "/");
@@ -23,6 +25,7 @@ export default function LocaleLink({
       onClick={onClick}
       href={formattedHref}
       className={`${className} block outline-none`}
+      target={target}
     >
       {children}
     </Link>

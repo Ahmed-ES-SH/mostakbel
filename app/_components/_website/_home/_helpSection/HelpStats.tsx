@@ -1,19 +1,15 @@
 "use client";
 
-import { useTranslation } from "@/app/_hooks/useTranslation";
 import { motion } from "framer-motion";
+import { State } from "./HelpSection";
+import { useLocale } from "@/app/_hooks/useLocale";
 
-const stats = [
-  { value: "15K+", key: "volunteers" },
-  { value: "1K+", key: "campaigns" },
-  { value: "400+", key: "donors" },
-  { value: "35K+", key: "support" },
-];
+interface props {
+  stats: State[];
+}
 
-export default function HelpStats() {
-  const t = useTranslation("helpSection");
-  const statsTexts: any = t.stats;
-
+export default function HelpStats({ stats }: props) {
+  const locale = useLocale();
   return (
     <motion.div
       initial="hidden"
@@ -34,7 +30,7 @@ export default function HelpStats() {
           }}
         >
           <p className="text-2xl font-bold text-[#FBBF24]">{item.value}</p>
-          <p className="text-sm text-gray-200">{statsTexts[item.key]}</p>
+          <p className="text-sm text-gray-200">{item.title[locale]}</p>
         </motion.div>
       ))}
     </motion.div>

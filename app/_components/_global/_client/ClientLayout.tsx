@@ -1,5 +1,6 @@
 "use client";
 import { useAppDispatch } from "@/app/redux/hooks";
+import { fetchCurrentUser } from "@/app/redux/slices/userSlice";
 import { setWidth } from "@/app/redux/slices/variablesSlice";
 import React, { ReactNode, useEffect } from "react";
 
@@ -25,6 +26,10 @@ export default function ClientLayout({ children }: props) {
       window.removeEventListener("resize", updateWidth);
     };
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, []);
 
   return <div className="w-full">{children}</div>;
 }

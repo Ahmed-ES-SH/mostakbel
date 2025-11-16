@@ -8,7 +8,7 @@ import React from "react";
 export default function NavDiv({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const locale = useLocale();
-  if (pathname.includes("/dashboard")) {
+  if (pathname.includes("/dashboard") || pathname.includes("/login")) {
     return null;
   }
 

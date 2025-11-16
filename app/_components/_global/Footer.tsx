@@ -5,12 +5,20 @@ import { FaPhone, FaEnvelope } from "react-icons/fa";
 import Img from "./Img";
 import NewsletterSection from "./_footer/NewsletterSection";
 import CopyrightFooter from "./_footer/CopyrightFooter";
+import { usePathname } from "next/navigation";
+import { useAppSelector } from "@/app/redux/hooks";
 
 export default function Footer() {
+  const pathname = usePathname();
   const t = useTranslation("footer");
+  const { logoSrc } = useAppSelector((state) => state.variables);
+
+  if (pathname.includes("/dashboard") || pathname.includes("/login")) {
+    return null;
+  }
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-light-primary-color text-white">
       {/* Newsletter Section */}
       <NewsletterSection />
 
@@ -24,7 +32,7 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
             className="space-y-4"
           >
-            <Img src="/logo.png" className="w-16" />
+            <Img src={logoSrc ?? "/logo.png"} className="w-16" />
             <p className="text-gray-300 leading-relaxed">{t.tagline}</p>
           </motion.div>
 
@@ -91,12 +99,12 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <FaPhone className="text-blue-400" />
-                <span className="text-gray-300">+163-3854-7896</span>
+                <span className="text-white">+163-3854-7896</span>
               </div>
               <div className="flex items-center gap-3">
                 <FaEnvelope className="text-blue-400" />
                 <div className="space-y-1">
-                  <div className="text-gray-300">info@bonat.com</div>
+                  <div className="text-white">info@bonat.com</div>
                 </div>
               </div>
             </div>

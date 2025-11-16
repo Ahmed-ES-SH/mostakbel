@@ -235,5 +235,19 @@
       "volunteer": "تطوع",
       "contactUs": "اتصل بنا"
     }
+  },
+
+  "newsPage": {
+    "pageTitle": "أخبار المركز",
+    "search": "البحث عن الأخبار...",
+    "categories": "الفئات",
+    "generalNews": "الأخبار العامة",
+    "events": "الفعاليات",
+    "announcements": "الإعلانات",
+    "recentArticles": "المقالات الحديثة",
+    "readMore": "اقرأ المزيد",
+    "published": "تم النشر",
+    "pagination": "الصفحة",
+    "of": "من"
   }
 }

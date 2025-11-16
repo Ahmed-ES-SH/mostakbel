@@ -1,6 +1,8 @@
 import { FaBlog, FaCommentAlt, FaHome } from "react-icons/fa";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { SiCloudflareworkers } from "react-icons/si";
+import { SlOrganization } from "react-icons/sl";
+import { IoNewspaperOutline } from "react-icons/io5";
 
 export const links = [
   {
@@ -21,11 +23,16 @@ export const links = [
   {
     icon: FaBlog,
     href: "/blog",
-    label: { en: "Blog", ar: "الأخبار" },
+    label: { en: "Blog", ar: "المدونة" },
   },
   {
-    icon: FaCommentAlt,
-    href: "/contact",
-    label: { en: "Contact us", ar: "تواصل معنا" },
+    icon: IoNewspaperOutline,
+    href: "/news",
+    label: { en: "News", ar: "الأخبار" },
+  },
+  {
+    icon: SlOrganization,
+    href: "/centerbranches",
+    label: { en: "Center branches", ar: "فروع المركز" },
   },
 ];

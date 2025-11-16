@@ -3,22 +3,27 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import LocaleLink from "@/app/_components/_global/LocaleLink";
 import { formatTitle } from "@/app/_helpers/GlobalHelpers";
+import { ProjectType } from "@/app/_components/_dashboard/_projects/_projectCard/ProjectCard";
 
 // Types
-export interface Project {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  hoverImage: string;
-}
 
 interface props {
-  project: Project;
+  project: ProjectType;
+  locale: "en" | "ar";
 }
 
-export default function ProjectCard({ project }: props) {
+export default function ProjectCard({ project, locale }: props) {
   const [isHovered, setIsHovered] = useState(false);
+
+  // الحصول على الصورة المناسبة بناءً على حالة Hover
+  const getImageSource = () => {
+    if (isHovered && project.images && project.images.length > 0) {
+      // استخدام أول صورة من مصفوفة الصور عند Hover
+      return project.images[0].image_path;
+    }
+    // استخدام الصورة الرئيسية كصورة افتراضية
+    return project.image;
+  };
 
   return (
     <motion.div
@@ -31,7 +36,7 @@ export default function ProjectCard({ project }: props) {
       <AnimatePresence mode="wait">
         <motion.img
           key={isHovered ? "hover" : "default"}
-          src={isHovered ? project.hoverImage : project.image}
+          src={getImageSource()}
           alt={project.title}
           className="w-full h-full object-cover"
           initial={{ opacity: 0 }}
@@ -49,12 +54,16 @@ export default function ProjectCard({ project }: props) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <motion.div
-          className="inline-block text-white bg-light-primary-color  px-6 py-2 rounded-full text-sm font-semibold mb-3"
-          whileHover={{ scale: 1.05 }}
-        >
-          {project.category}
-        </motion.div>
+        {project.category && (
+          <motion.div
+            className="inline-block text-white bg-light-primary-color  px-6 py-2 rounded-full text-sm font-semibold mb-3"
+            whileHover={{ scale: 1.05 }}
+          >
+            {locale == "ar"
+              ? project.category.title_ar
+              : project.category.title_en}
+          </motion.div>
+        )}
         <LocaleLink
           href={`/ourwork/${formatTitle(project.title)}?projectId=${
             project.id

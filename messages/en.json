@@ -235,5 +235,19 @@
       "volunteer": "Volunteer",
       "contactUs": "Contact Us"
     }
+  },
+
+  "newsPage": {
+    "pageTitle": "Center News",
+    "search": "Search news...",
+    "categories": "Categories",
+    "generalNews": "General News",
+    "events": "Events",
+    "announcements": "Announcements",
+    "recentArticles": "Recent Articles",
+    "readMore": "Read More",
+    "published": "Published",
+    "pagination": "Page",
+    "of": "of"
   }
 }

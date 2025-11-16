@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import ProjectCard, { Project } from "./ProjectCard";
+import ProjectCard from "./ProjectCard";
 import { projectImages, translations } from "./mockData";
 import LocaleLink from "@/app/_components/_global/LocaleLink";
+import { ProjectType } from "@/app/_components/_dashboard/_projects/_projectCard/ProjectCard";
+import { useLocale } from "@/app/_hooks/useLocale";
 
 const NavigationButton: React.FC<{
   direction: "prev" | "next";
@@ -25,17 +27,14 @@ const NavigationButton: React.FC<{
   </motion.button>
 );
 
-export default function RecentProjects() {
-  const [lang] = useState<"en" | "ar">("en");
-  const [isHovered, setIsHovered] = useState(false);
-  const t = translations[lang];
+interface props {
+  projects: ProjectType[];
+}
 
-  const projects: Project[] = t.projects.map((proj, index) => ({
-    id: index + 1,
-    title: proj.title,
-    category: proj.category,
-    ...projectImages[index],
-  }));
+export default function RecentProjects({ projects }: props) {
+  const locale = useLocale();
+  const [isHovered, setIsHovered] = useState(false);
+  const t = translations[locale];
 
   return (
     <section className="bg-[#faf8f5] py-20 px-4 relative overflow-hidden">
@@ -145,11 +144,14 @@ export default function RecentProjects() {
             }}
             className="pb-16!"
           >
-            {projects.map((project) => (
-              <SwiperSlide key={project.id}>
-                <ProjectCard project={project} />
-              </SwiperSlide>
-            ))}
+            {projects &&
+              Array.isArray(projects) &&
+              projects.length > 0 &&
+              projects.map((project) => (
+                <SwiperSlide key={project.id}>
+                  <ProjectCard locale={locale} project={project} />
+                </SwiperSlide>
+              ))}
           </Swiper>
 
           {/* Custom Navigation Buttons */}

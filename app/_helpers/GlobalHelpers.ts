@@ -2,10 +2,19 @@ import * as FaIcons from "react-icons/fa";
 import crypto from "crypto";
 import { isToday, isYesterday, isThisWeek, format, parseISO } from "date-fns";
 import { ar, enUS } from "date-fns/locale";
+import { RiTwitterXFill } from "react-icons/ri";
+
 const ALGORITHM = "aes-256-cbc";
 
+export type ImageType = string | File | null;
+
+const Icons = {
+  ...FaIcons,
+  RiTwitterXFill,
+};
+
 export const getIconComponent = (iconName: string) => {
-  return FaIcons[iconName as keyof typeof FaIcons] || FaIcons.FaQuestionCircle;
+  return Icons[iconName as keyof typeof FaIcons] || Icons.RiTwitterXFill;
 };
 
 export const formatTitle = (title?: string) => {
@@ -120,3 +129,15 @@ export function formatTimewithLocale(
 
   return format(date, "yyyy/MM/dd 'at' HH:mm", { locale: dateLocale });
 }
+
+export const getImageSrc = (src: ImageType) => {
+  if (typeof src == "string") {
+    return src;
+  }
+
+  if (src instanceof File) {
+    return URL.createObjectURL(src);
+  }
+
+  return "/upload.png";
+};

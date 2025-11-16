@@ -4,10 +4,10 @@ import { useLocale } from "@/app/_hooks/useLocale";
 import { usePathname } from "next/navigation";
 import { IoMdHeart } from "react-icons/io";
 import LanguageBtn from "./LanguageBtn";
-import { CiMenuBurger } from "react-icons/ci";
 import Img from "../Img";
 import { links } from "@/app/constants/_website/navbar";
 import MobileDropLinks from "./MobileDropLinks";
+import { useAppSelector } from "@/app/redux/hooks";
 
 interface props {
   hideWhitePart: boolean;
@@ -16,6 +16,7 @@ interface props {
 export default function BottomNavbar({ hideWhitePart }: props) {
   const locale = useLocale();
   const pathName = usePathname();
+  const { logoSrc } = useAppSelector((state) => state.variables);
 
   return (
     <div
@@ -29,7 +30,7 @@ export default function BottomNavbar({ hideWhitePart }: props) {
           <MobileDropLinks />
           {/* logo small screen */}
           <LocaleLink className="md:hidden" href="/">
-            <Img src="/logo.png" className="w-12 md:hidden" />
+            <Img src={logoSrc ?? "/logo.png"} className="w-12 md:hidden" />
           </LocaleLink>
         </div>
 
@@ -54,18 +55,18 @@ export default function BottomNavbar({ hideWhitePart }: props) {
         {/* message */}
         <p className="text-white hidden 2xl:block">
           {locale == "en"
-            ? "Welcome to CDCP Are you ready to help them? Let’s become avolunteers..."
-            : "أهلاً بكم في CDCP. هل أنتم مستعدون لمساعدتهم؟ هيا بنا نصبح متطوعين..."}
+            ? "Welcome to CDCD Are you ready to help them? Let’s become avolunteers..."
+            : "أهلاً بكم في CDCD. هل أنتم مستعدون لمساعدتهم؟ هيا بنا نصبح متطوعين..."}
         </p>
       </div>
       <div className="flex items-center gap-2">
         {/* button */}
-        <button className="relative hidden  whitespace-nowrap max-md:text-sm group overflow-hidden bg-primary text-white py-2 md:py-4 px-4 md:px-8 rounded-full md:flex items-center justify-center">
+        <button className="relative hidden  whitespace-nowrap max-md:text-sm group overflow-hidden bg-transparent hover:bg-primary duration-200 text-white py-2 md:py-4 px-4 md:px-8 rounded-full md:flex items-center justify-center">
           <div className="flex items-center gap-2 relative order-1">
             <IoMdHeart />
             <p className="">{locale == "en" ? "Donate Now" : "تبرع الأن"}</p>
           </div>
-          <span className="order-2 w-full h-full group-hover:h-0 duration-300 absolute top-0 left-0 bg-light-primary-color"></span>
+          <span className="order-2 w-full h-full  group-hover:h-0 duration-300 absolute top-0 left-0 bg-light-primary-color"></span>
         </button>
 
         {/* language toggle */}

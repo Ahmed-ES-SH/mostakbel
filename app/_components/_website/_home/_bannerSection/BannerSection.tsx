@@ -1,16 +1,31 @@
-// components/open-door-section.tsx
 "use client";
 
+import { TextType } from "@/app/_components/_dashboard/_homePage/_aboutSectionDash/AboutSectionDash";
 import { useLocale } from "@/app/_hooks/useLocale";
-import { useTranslation } from "@/app/_hooks/useTranslation";
-import { easeOut, motion } from "framer-motion";
-import { FaDoorOpen, FaHandsHelping, FaUsers } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaUsers } from "react-icons/fa";
+import BannerCard from "./BannerCard";
+import { getIconComponent } from "@/app/_helpers/GlobalHelpers";
 
-export function BannerSection() {
+export interface bannerCardType {
+  icon: string;
+  color: string;
+  bg: string;
+  title: TextType;
+  description: TextType;
+  textColor: string;
+}
+
+interface props {
+  bannerCards: bannerCardType[];
+  bannerTexts: {
+    title: TextType;
+    icon: string;
+  };
+}
+
+export function BannerSection({ bannerCards, bannerTexts }: props) {
   const locale = useLocale();
-  const isRTL = locale == "ar";
-  const t = useTranslation("openDoor");
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -21,45 +36,7 @@ export function BannerSection() {
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: easeOut,
-      },
-    },
-  };
-
-  // ✅ Array of cards (static content extracted)
-  const cards = [
-    {
-      icon: FaDoorOpen,
-      color: "text-blue-500",
-      bg: "bg-light-primary-color",
-      title: t.alwaysOpen,
-      description: t.openDescription,
-      textColor: "text-gray-100",
-    },
-    {
-      icon: FaUsers,
-      color: "text-green-500",
-      bg: "bg-white",
-      title: t.morePeople,
-      description: t.peopleDescription,
-      textColor: "text-gray-800",
-    },
-    {
-      icon: FaHandsHelping,
-      color: "text-orange-500",
-      bg: "bg-white",
-      title: t.supportEachOther,
-      description: t.supportDescription,
-      textColor: "text-gray-800",
-    },
-  ];
+  const MainIcon = getIconComponent(bannerTexts.icon);
 
   return (
     <section className="w-full bg-primary-color pt-16 pb-4 px-4">
@@ -77,7 +54,7 @@ export function BannerSection() {
             whileTap={{ scale: 0.95 }}
           >
             <div className="relative">
-              <FaDoorOpen className="text-6xl text-white" />
+              <MainIcon className="text-6xl text-white" />
               <motion.div
                 className="absolute -top-2 -right-2"
                 animate={{ rotate: [0, 15, 0] }}
@@ -92,8 +69,8 @@ export function BannerSection() {
             </div>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-light-primary-color mb-4">
-            {t.title}
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            {bannerTexts.title[locale]}
           </h2>
         </motion.div>
 
@@ -104,27 +81,14 @@ export function BannerSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {cards.map((card, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className={`text-center p-6 bg-light-primary-color hover:bg-white cursor-pointer group rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300`}
-            >
-              <div className="flex justify-center mb-4">
-                <card.icon className={`text-4xl ${card.color}`} />
-              </div>
-              <h3
-                className={`text-xl font-semibold text-gray-100 group-hover:text-gray-900 duration-300 mb-3`}
-              >
-                {card.title}
-              </h3>
-              <p
-                className={`leading-relaxed text-white group-hover:text-gray-800 duration-300`}
-              >
-                {card.description}
-              </p>
-            </motion.div>
-          ))}
+          {bannerCards &&
+            bannerCards.map((card, index) => (
+              <BannerCard
+                index={index}
+                card={card}
+                key={`banner-card-${index}`}
+              />
+            ))}
         </motion.div>
       </div>
     </section>

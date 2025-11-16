@@ -7,7 +7,7 @@ export default function NewsletterSection() {
   const t = useTranslation("footer");
   return (
     <>
-      <div className="border-b border-gray-700">
+      <div className="border-b-black/10 border-b">
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-4">
@@ -36,12 +36,12 @@ export default function NewsletterSection() {
                 <input
                   type="email"
                   placeholder={t.newsletter.placeholder}
-                  className="px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 flex-1"
+                  className="px-4 py-3 duration-300 bg-[#8ABB6C]  placeholder:text-white focus:placeholder:text-black text-white border border-primary-color rounded-lg focus:outline-none focus:bg-white focus:text-black focus:ring-2 focus:ring-[#8ABB6C] flex-1"
                 />
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors"
+                  className="bg-[#8ABB6C] hover:bg-[#5ABB6D] px-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors"
                 >
                   {t.newsletter.button}
                   <FaArrowRight className="text-sm" />

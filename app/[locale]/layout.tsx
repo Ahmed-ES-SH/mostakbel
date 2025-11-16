@@ -8,6 +8,8 @@ import Footer from "../_components/_global/Footer";
 import { getServerTranslation } from "../_helpers/getServerTranslation";
 import { getSharedMetadata } from "../_helpers/SharedMetadata";
 import ScrollToTop from "../_components/_global/ScrollToTop";
+import ThemeProvider from "../_components/_website/ThemeProvider";
+import FetchData from "../_helpers/FetchData";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -39,8 +41,7 @@ export default async function RootLayout({
 }>) {
   // Ensure that the incoming `locale` is valid
   const { locale } = await params;
-  const t = await getServerTranslation("mainMeta");
-
+  const socialData = await FetchData(`/social-contact-info`, false);
   return (
     <html dir={directionMap[locale as "en" | "ar"]} lang={locale}>
       <body
@@ -48,15 +49,17 @@ export default async function RootLayout({
         className={`antialiased`}
       >
         <ReduxProvider>
-          <ClientLayout>
-            <Toaster position="top-center" richColors closeButton />
-            <Navbar />
-            <div className="w-full relative">
-              {children}
-              <ScrollToTop />
-            </div>
-            <Footer />
-          </ClientLayout>
+          <ThemeProvider>
+            <ClientLayout>
+              <Toaster position="top-center" richColors closeButton />
+              <Navbar socialData={socialData} />
+              <div className="w-full relative">
+                {children}
+                <ScrollToTop />
+              </div>
+              <Footer />
+            </ClientLayout>
+          </ThemeProvider>
         </ReduxProvider>
       </body>
     </html>

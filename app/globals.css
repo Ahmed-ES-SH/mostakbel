@@ -4,8 +4,14 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary-color: #1c5931;
-  --light-primary-color: #33ad5d;
+  --primary-color: #3b9797;
+  --second-color: #ffae00;
+  --thired-color: #ff8904;
+  --light-primary-color: #4a9782;
+  --primary-boldgray: #38444f;
+  --secondary-dash: #1f2937;
+  --thired-dash: #0f172a;
+  --fourth-dash: #606d7a;
   --text-primary: #0ac5b2;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -44,6 +50,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-boldgray: var(--primary-boldgray);
+  --color-secondary-dash: var(--secondary-dash);
+  --color-thired-dash: var(--thired-dash);
+  --color-fourth-dash: var(--fourth-dash);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -72,6 +82,8 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
   --color-primary-color: var(--primary-color);
+  --color-second: var(--second-color);
+  --color-thired: var(--thired-color);
   --color-light-primary-color: var(--light-primary-color);
   --color-text-primary: var(--text-primary);
   --color-popover-foreground: var(--popover-foreground);
@@ -151,9 +163,51 @@ textarea {
   outline: none;
 }
 
+.hidden-scrollbar {
+  /* لجميع المتصفحات */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
 @layer components {
   .c-container {
     @apply xl:w-[90%] lg:w-[95%] w-[98%] mx-auto px-4 py-2;
+  }
+
+  .input-style {
+    @apply border rounded-md outline-transparent focus:outline-sky-400 duration-200 p-2 w-full border-gray-300;
+  }
+
+  .select-effect {
+    @apply hover:shadow-primary-color hover:scale-110 p-2 border-2 border-transparent hover:border-primary-color cursor-pointer duration-300;
+  }
+
+  .close-btn {
+    @apply w-10 h-10 cursor-pointer bg-white text-primary-boldgray hover:scale-110  shadow-md flex items-center absolute top-2 left-2 justify-center rounded-md hover:bg-red-300 hover:text-white duration-200;
+  }
+
+  .submit-btn {
+    @apply w-1/4 max-lg:w-1/2 max-md:w-[90%] max-sm:w-[95%] rounded-md bg-primary border border-transparent text-white text-center shadow-sm py-2 hover:bg-white hover:border-primary hover:scale-110 hover:text-black cursor-pointer my-3  mx-auto duration-200;
+  }
+
+  .info-btn {
+    @apply px-4 py-2 cursor-pointer  max-md:px-2 max-md:py-1 flex items-center gap-3 bg-primary rounded-md text-white  border border-transparent hover:scale-110 hover:bg-white hover:text-black hover:border-primary duration-200;
+  }
+
+  .danger-btn {
+    @apply px-4 py-2 cursor-pointer  max-md:px-2 max-md:py-1 flex items-center gap-3 bg-red-400 rounded-md text-white  border border-transparent hover:scale-110 hover:bg-white hover:text-black hover:border-red-400 duration-200;
+  }
+
+  .cancle-btn {
+    @apply px-4 py-2 cursor-pointer  max-md:px-2 max-md:py-1 flex items-center gap-3 bg-gray-400 rounded-md text-white  border border-transparent hover:scale-110 hover:bg-white hover:text-black hover:border-gray-400 duration-200;
+  }
+
+  .select-style {
+    @apply rounded-md w-full outline-none border border-gray-300 p-2;
+  }
+
+  .popup-main-bg {
+    @apply w-full h-screen flex items-center justify-center bg-black/50 fixed top-0 left-0 z-999999 backdrop-blur-lg;
   }
 }
 

@@ -8,7 +8,7 @@ export default function CopyrightFooter() {
 
   return (
     <>
-      <div className="border-t border-gray-800">
+      <div className="border-t border-black/10">
         <div className="container mx-auto px-4 py-6">
           <motion.div
             initial={{ opacity: 0 }}
@@ -16,23 +16,16 @@ export default function CopyrightFooter() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-col md:flex-row justify-between items-center gap-4"
           >
-            <div className="flex items-center gap-2 text-gray-300">
+            <div className="flex items-center gap-2 text-white">
               <span>
                 © Conveyor {new Date().getFullYear()} Donat, {t.copyright}
               </span>
-              <FaHeart className="text-red-500 text-sm" />
             </div>
             <div className="flex gap-6">
-              <a
-                href="#"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
+              <a href="#" className="text-white  transition-colors">
                 {t.privacy}
               </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
+              <a href="#" className="text-white  transition-colors">
                 {t.terms}
               </a>
             </div>

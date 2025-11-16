@@ -8,10 +8,41 @@ import LocaleLink from "./LocaleLink";
 import BottomNavbar from "./_navbar/BottomNavbar";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/app/_hooks/useLocale";
+import { useAppSelector } from "@/app/redux/hooks";
+import { Location } from "../_dashboard/_CenterBranches/types";
+import { TextType } from "../_dashboard/_homePage/_aboutSectionDash/AboutSectionDash";
 
-export default function Navbar() {
+interface props {
+  socialData: {
+    gmail_account: string;
+    location: Location;
+    whatsapp_number: string;
+    facebook_account: string;
+    x_account: string;
+    youtube_account: string;
+    instgram_account: string;
+    snapchat_account: string;
+    tiktok_account: string;
+    linked_account: string;
+  };
+}
+
+interface itemType {
+  title: TextType;
+  value: string;
+}
+
+interface socialIcon {
+  icon: any;
+  href: string;
+}
+
+export default function Navbar({ socialData }: props) {
+  const { logoSrc } = useAppSelector((state) => state.variables);
   const locale = useLocale();
   const [hideWhitePart, setHideWhitePart] = useState(false);
+  const [currentDetailes, setCurrentDetailes] = useState<itemType[]>([]);
+  const [socialIcons, setSocialIcons] = useState<socialIcon[]>([]);
 
   // Handle scroll event
   useEffect(() => {
@@ -24,48 +55,95 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const currentDetailes = [
-    {
-      title: {
-        en: "Locate Address:",
-        ar: "العنوان:",
-      },
-      value: "Damascus, Syria - Al-Mazzeh",
-    },
-    {
-      title: {
-        en: "Call us any time:",
-        ar: "اتصل بنا في أي وقت:",
-      },
-      value: "+963 944 123 456",
-    },
-    {
-      title: {
-        en: "Email us any time:",
-        ar: "راسلنا في أي وقت:",
-      },
-      value: "info@hewar-peace.org",
-    },
-  ];
+  useEffect(() => {
+    if (socialData) {
+      setCurrentDetailes([
+        {
+          title: {
+            en: "Locate Address:",
+            ar: "العنوان:",
+          },
+          value: socialData?.location?.address,
+        },
+        {
+          title: {
+            en: "Call us any time:",
+            ar: "اتصل بنا في أي وقت:",
+          },
+          value: socialData?.whatsapp_number,
+        },
+        {
+          title: {
+            en: "Email us any time:",
+            ar: "راسلنا في أي وقت:",
+          },
+          value: socialData?.gmail_account,
+        },
+      ]);
 
-  const socialIcons = [
-    {
-      icon: FaFacebook,
-      href: "www.facebook.com",
-    },
-    {
-      icon: FaYoutube,
-      href: "www.youtube.com",
-    },
-    {
-      icon: FaLinkedin,
-      href: "www.linkedin.com",
-    },
-    {
-      icon: FaTiktok,
-      href: "www.tiktok.com",
-    },
-  ];
+      setSocialIcons([
+        {
+          icon: FaFacebook,
+          href: socialData.facebook_account,
+        },
+        {
+          icon: FaYoutube,
+          href: socialData.youtube_account,
+        },
+        {
+          icon: FaLinkedin,
+          href: socialData.linked_account,
+        },
+        {
+          icon: FaTiktok,
+          href: socialData.tiktok_account,
+        },
+      ]);
+    } else {
+      setCurrentDetailes([
+        {
+          title: {
+            en: "Locate Address:",
+            ar: "العنوان:",
+          },
+          value: "Damascus, Syria - Al-Mazzeh",
+        },
+        {
+          title: {
+            en: "Call us any time:",
+            ar: "اتصل بنا في أي وقت:",
+          },
+          value: "+963 944 123 456",
+        },
+        {
+          title: {
+            en: "Email us any time:",
+            ar: "راسلنا في أي وقت:",
+          },
+          value: "info@hewar-peace.org",
+        },
+      ]);
+
+      setSocialIcons([
+        {
+          icon: FaFacebook,
+          href: "#",
+        },
+        {
+          icon: FaYoutube,
+          href: "#",
+        },
+        {
+          icon: FaLinkedin,
+          href: "#",
+        },
+        {
+          icon: FaTiktok,
+          href: "#",
+        },
+      ]);
+    }
+  }, [socialData]);
 
   return (
     <NavDiv>
@@ -87,7 +165,10 @@ export default function Navbar() {
               >
                 {/* logo */}
                 <LocaleLink href="/">
-                  <Img src="/logo.png" className="w-16 hidden lg:block" />
+                  <Img
+                    src={logoSrc ?? "/logo.png"}
+                    className="w-16 hidden lg:block"
+                  />
                 </LocaleLink>
 
                 {/* current details */}
@@ -110,13 +191,14 @@ export default function Navbar() {
                 {/* social icons */}
                 <div className="items-center gap-3 hidden xl:flex">
                   {socialIcons.map((item, index) => (
-                    <LocaleLink
+                    <a
                       key={`social-icon-${index}`}
+                      target="_blank"
                       href={item.href}
                       className="lg:size-12 size-8 text-primary-color cursor-pointer hover:bg-primary-color hover:text-white duration-300 rounded-full border border-gray-200 flex items-center justify-center"
                     >
                       <item.icon className="size-6" />
-                    </LocaleLink>
+                    </a>
                   ))}
                 </div>
               </motion.div>

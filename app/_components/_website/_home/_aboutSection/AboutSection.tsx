@@ -1,90 +1,38 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  FaUtensils,
-  FaTint,
-  FaGraduationCap,
-  FaHeartbeat,
-  FaArrowRight,
-} from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { useLocale } from "@/app/_hooks/useLocale";
 import { directionMap } from "@/app/constants/_website/Global";
 import Img from "@/app/_components/_global/Img";
-
-// Translation files
-const translations = {
-  en: {
-    aboutUs: "About Us",
-    donat: "Donat",
-    heading: "We Believe That We Can Save More Life's With You",
-    description:
-      "Dialogue and Civil Peace Center is the largest global crowdfunding community connecting nonprofits, donors, and companies in nearly every country. We help nonprofits from Afghanistan to Zimbabwe (and hundreds of places in between) access the tools, training, and support they need to be more effective and make our world a better place.",
-    charityFoods: "Charity For Foods",
-    charityWater: "Charity For Water",
-    charityEducation: "Charity For Education",
-    charityMedical: "Charity For Medical",
-    aboutMore: "About More",
-  },
-  ar: {
-    aboutUs: "معلومات عنا",
-    donat: "التبرع",
-    heading: "نؤمن بأننا نستطيع إنقاذ المزيد من الأرواح معك",
-    description:
-      "مركز الحوار والسلم الأهلي هو أكبر مجتمع للتمويل الجماعي العالمي يربط المنظمات غير الربحية والمانحين والشركات في كل بلد تقريبًا. نحن نساعد المنظمات غير الربحية من أفغانستان إلى زيمبابوي (ومئات الأماكن بينهما) في الوصول إلى الأدوات والتدريب والدعم التي تحتاجها لتكون أكثر فعالية وجعل عالمنا مكانًا أفضل.",
-    charityFoods: "الخيرية للأغذية",
-    charityWater: "الخيرية للمياه",
-    charityEducation: "الخيرية للتعليم",
-    charityMedical: "الخيرية للطب",
-    aboutMore: "اعرف المزيد",
-  },
-};
+import { TextType } from "@/app/_components/_dashboard/_homePage/_aboutSectionDash/AboutSectionDash";
+import CharityCard from "./CharityCard";
 
 // Components
-const CharityCard = ({ icon: Icon, text, color, delay }: any) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay }}
-    viewport={{ once: true }}
-    className="flex items-center gap-3"
-  >
-    <motion.div
-      whileHover={{ scale: 1.1, rotate: 5 }}
-      className={`${color} w-10 h-10 rounded-full flex items-center justify-center`}
-    >
-      <Icon className="text-white text-lg" />
-    </motion.div>
-    <span className="text-gray-700 font-medium">{text}</span>
-  </motion.div>
-);
 
-export default function AboutSection() {
+interface CharityType {
+  icon: string;
+  text: TextType;
+  color: string;
+  delay: number;
+}
+
+interface textsType {
+  badge: TextType;
+  title: TextType;
+  heading: TextType;
+  description: TextType;
+}
+
+interface props {
+  charities: CharityType[];
+  texts: textsType;
+  about_image: string;
+}
+
+export default function AboutSection({ charities, texts, about_image }: props) {
   const locale = useLocale();
-  const t = translations[locale];
   const isRTL = locale === "ar";
-
-  const charities = [
-    {
-      icon: FaUtensils,
-      text: t.charityFoods,
-      color: "bg-teal-600",
-      delay: 0.2,
-    },
-    { icon: FaTint, text: t.charityWater, color: "bg-yellow-500", delay: 0.3 },
-    {
-      icon: FaGraduationCap,
-      text: t.charityEducation,
-      color: "bg-orange-500",
-      delay: 0.4,
-    },
-    {
-      icon: FaHeartbeat,
-      text: t.charityMedical,
-      color: "bg-teal-700",
-      delay: 0.5,
-    },
-  ];
 
   return (
     <div
@@ -117,11 +65,12 @@ export default function AboutSection() {
               {/* Main image frame */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="relative rounded-3xl max-lg:overflow-hidden lg:w-[550px] w-full lg:h-[550px] h-[300px] shadow-2xl border-8 border-t-orange-400 border-teal-700"
+                className="relative rounded-3xl max-lg:overflow-hidden lg:w-[550px] w-full lg:h-[550px] h-[300px] shadow-2xl border-8 border-t-second border-teal-700"
               >
                 <div className="bg-liner-to-br md:absolute z-12 md:-left-12 md:top-0 lg:w-[640px] w-full h-full  from-teal-100 to-yellow-100 flex items-center justify-center">
                   <Img
-                    src="/website/about_1_1-2.png"
+                    src={about_image ?? "/website/about_1_1-2.png"}
+                    errorSrc="/website/about_1_1-2.png"
                     alt="Happy children"
                     className="lg:w-[640px] w-full  relative"
                   />
@@ -169,20 +118,25 @@ export default function AboutSection() {
               className="inline-block"
             >
               <span className="text-yellow-500 font-handwriting text-xl">
-                {t.aboutUs}
+                {texts.badge[locale] ?? ""}
               </span>
 
               <div className="h-1 bg-liner-to-r from-yellow-500 via-teal-700 to-yellow-500 rounded-full mt-1" />
             </motion.div>
+
+            {/* Title (clickable) */}
+            <motion.h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight cursor-pointer">
+              {texts.title[locale]}
+            </motion.h1>
 
             {/* Main Heading */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight"
+              className="text-4xl lg:text-4xl font-bold text-gray-900 leading-tight"
             >
-              {t.heading}
+              {texts.heading[locale]}
             </motion.h1>
 
             {/* Description */}
@@ -192,7 +146,7 @@ export default function AboutSection() {
               transition={{ delay: 0.6 }}
               className="text-gray-600 text-lg leading-relaxed"
             >
-              {t.description}
+              {texts.description[locale] ?? ""}
             </motion.p>
 
             {/* Charity Categories */}
@@ -214,7 +168,7 @@ export default function AboutSection() {
               whileTap={{ scale: 0.95 }}
               className="group bg-light-primary-color hover:bg-primary-color text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center gap-3  transition-all shadow-lg"
             >
-              {t.aboutMore}
+              {locale == "ar" ? "معرفة المزيد" : "More About"}
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}

@@ -6,12 +6,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FiSend } from "react-icons/fi";
 import { useLocale } from "@/app/_hooks/useLocale";
+import { useTranslation } from "@/app/_hooks/useTranslation";
 
-interface ContactFormProps {
-  translations: any;
-}
+export function ContactForm({ disabled = false }) {
+  const translations = useTranslation("contact");
 
-export function ContactForm({ translations }: ContactFormProps) {
   const locale = useLocale();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -46,7 +45,9 @@ export function ContactForm({ translations }: ContactFormProps) {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="bg-white flex-1 rounded-2xl border border-gray-200 p-8 shadow-sm"
+      className={`bg-white h-full flex-1 rounded-2xl border border-gray-200 p-8 shadow-sm ${
+        disabled ? "grayscale-100" : ""
+      }`}
     >
       <div className="space-y-4">
         <motion.input
@@ -97,7 +98,7 @@ export function ContactForm({ translations }: ContactFormProps) {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || disabled}
         className="w-full mt-6 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2 disabled:opacity-70"
       >
         {isSubmitting ? (
