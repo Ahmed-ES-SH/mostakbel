@@ -64,7 +64,7 @@ export default function LoginPage() {
       const response = await instance.post(`/login`, data);
       if (response.status == 200) {
         const token = encryptToken(response.data.token);
-        cookie.set("hewar_token", token);
+        cookie.set("stichtingmostakbal_token", token);
         const user = response.data.data;
         dispatch(setUser(user));
         const direct = user.role == "admin" ? "/en/dashboard" : "/";
