@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 
-export type LocaleType = "en" | "ar";
+export type LocaleType = "en" | "ar" | 'nl';
 
 export function useLocale() {
   const params = useParams();

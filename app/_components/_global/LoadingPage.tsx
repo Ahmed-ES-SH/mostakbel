@@ -2,6 +2,7 @@
 import React from "react";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { FiLoader, FiCoffee, FiCloud, FiStar } from "react-icons/fi";
+import { useLocale } from "@/app/_hooks/useLocale";
 
 interface LoadingPageProps {
   logo?: string | null;
@@ -13,11 +14,34 @@ interface LoadingPageProps {
 
 const LoadingPage: React.FC<LoadingPageProps> = ({
   logo = null,
-  message = "جاري التحميل...",
+  message,
   showSpinner = true,
   backgroundColor = "bg-white",
   textColor = "text-gray-800",
 }) => {
+  const locale = useLocale();
+
+  const t = {
+    ar: {
+      loading: "جاري التحميل...",
+      wait: "الرجاء الانتظار...",
+      alt: "شعار التطبيق",
+    },
+    en: {
+      loading: "Loading...",
+      wait: "Please wait...",
+      alt: "App Logo",
+    },
+    nl: {
+      loading: "Laden...",
+      wait: "Even geduld aub...",
+      alt: "App Logo",
+    },
+  };
+
+  const currentT = t[locale] || t.en;
+  const displayMessage = message || currentT.loading;
+
   // تأثيرات متحركة للعناصر
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -111,7 +135,7 @@ const LoadingPage: React.FC<LoadingPageProps> = ({
             {logo ? (
               <motion.img
                 src={logo}
-                alt="شعار التطبيق"
+                alt={currentT.alt}
                 className="w-24 h-24 object-contain mb-4"
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
@@ -137,7 +161,7 @@ const LoadingPage: React.FC<LoadingPageProps> = ({
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              {message}
+              {displayMessage}
             </motion.h1>
 
             {/* شريط التقدم المتحرك */}
@@ -194,7 +218,7 @@ const LoadingPage: React.FC<LoadingPageProps> = ({
           variants={itemVariants}
           className="absolute bottom-8 text-center"
         >
-          <p className="text-sm text-gray-500">الرجاء الانتظار...</p>
+          <p className="text-sm text-gray-500">{currentT.wait}</p>
         </motion.div>
       </motion.div>
     </AnimatePresence>

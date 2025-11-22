@@ -1,0 +1,309 @@
+{
+  "mainMeta": {
+    "title": "stichtingmostakbal",
+    "description": "Een liefdadigheidsplatform gewijd aan het bevorderen van dialoog en burgerlijke vrede in Syrië, ter ondersteuning van humanitaire en ontwikkelingsprojecten die de samenwerking en solidariteit in de gemeenschap versterken."
+  },
+  "centerBranchesMeta": {
+    "title": "Onze Centra & Vestigingen — stichtingmostakbal",
+    "description": "Vind onze regionale centra en vestigingen in heel Syrië die humanitaire hulp, dialoogprogramma's en gemeenschapsondersteuning bieden. Contactgegevens, openingstijden en beschikbare diensten."
+  },
+  "blogMeta": {
+    "title": "Blog — stichtingmostakbal",
+    "description": "Lees nieuws, projectupdates en deskundige artikelen over gemeenschapsontwikkeling, verzoening en initiatieven voor burgerlijke vrede die door ons centrum in Syrië worden uitgevoerd."
+  },
+  "aboutMeta": {
+    "title": "Over Ons — stichtingmostakbal",
+    "description": "Leer meer over onze missie, visie, team en geschiedenis. Wij voeren humanitaire en ontwikkelingsprojecten uit die gericht zijn op het versterken van sociale cohesie en veerkracht van de gemeenschap in Syrië."
+  },
+  "newsMeta": {
+    "title": "Nieuws & Pers — stichtingmostakbal",
+    "description": "Laatste nieuws, persberichten en aankondigingen over onze humanitaire projecten, evenementen en gemeenschapsinitiatieven in heel Syrië."
+  },
+  "ourwrokMeta": {
+    "title": "Ons Werk — Programma's & Projecten",
+    "description": "Overzicht van onze programma's: dialooginitiatieven, onderwijs en ondersteuning van levensonderhoud, noodhulp en gemeenschapsontwikkelingsprojecten die duurzame vrede bevorderen."
+  },
+
+  "projectMeta": {
+    "title": "Projectdetails",
+    "description": "Informatie over het humanitaire en ontwikkelingsproject, inclusief doelen, impact, activiteiten en projectresultaten."
+  },
+  "articleMeta": {
+    "title": "Artikel",
+    "description": "Een gedetailleerd artikel over inzichten, analyses en inhoud met betrekking tot burgerlijke vrede, gemeenschapsondersteuning en ontwikkelingsinitiatieven."
+  },
+  "newMeta": {
+    "title": "Nieuws",
+    "description": "Laatste updates, aankondigingen en persinformatie met betrekking tot onze humanitaire en gemeenschapsprojecten."
+  },
+
+  "hero": {
+    "discover": "Ontdek Nu",
+    "watchVideo": "Bekijk Video"
+  },
+
+  "services": {
+    "subtitle": "Liefdadigheidsdiensten",
+    "title": "We Doen Het Voor Iedereen\nHumanitaire Diensten",
+    "learnMore": "Meer Informatie"
+  },
+
+  "openDoor": {
+    "title": "Onze Deuren Staan Altijd Open Voor Meer Mensen Die Elkaar Willen Steunen!",
+    "alwaysOpen": "Altijd Open",
+    "openDescription": "Onze gemeenschap verwelkomt iedereen met open armen en eindeloze mogelijkheden",
+    "morePeople": "Meer Mensen",
+    "peopleDescription": "Sluit je aan bij onze groeiende familie van gepassioneerde individuen die een verschil maken",
+    "supportEachOther": "Steun Elkaar",
+    "supportDescription": "Samen staan we sterker door wederzijdse steun en samenwerking",
+    "getInvolved": "Doe Mee"
+  },
+
+  "helpSection": {
+    "title": "Wij Helpen Altijd De Behoeftigen",
+    "description": "Ontdek de inspirerende verhalen van individuen en gemeenschappen die zijn getransformeerd door onze programma's. Onze succesverhalen benadrukken de reële impact van uw donaties.",
+    "stats": {
+      "volunteers": "Ongelooflijke Vrijwilligers",
+      "campaigns": "Succesvolle Campagnes",
+      "donors": "Maandelijkse Donateurs",
+      "support": "Teamondersteuning"
+    }
+  },
+
+  "footer": {
+    "newsletter": {
+      "title": "Abonneer op Onze Nieuwsbrief",
+      "description": "Regelmatige inspecties en feedbackmechanismen",
+      "placeholder": "Voer uw e-mailadres in",
+      "button": "Abonneren"
+    },
+    "donation": {
+      "description": "Ons beveiligde online donatieplatform stelt u in staat om snel en veilig bijdragen te leveren. Kies uit verschillende betaalmethoden."
+    },
+    "tagline": "Een verschil maken door veilige en transparante donaties.",
+    "links": {
+      "about": {
+        "title": "Over Ons",
+        "about": "Over Ons",
+        "news": "Ons Nieuws",
+        "campaign": "Onze Campagne",
+        "pricing": "Prijsbeleid",
+        "contact": "Neem Contact Op"
+      },
+      "support": {
+        "title": "Ondersteuning",
+        "home": "Thuisondersteuning",
+        "support": "Ondersteuning",
+        "campaign": "Onze Campagne",
+        "contact": "Neem Contact Op"
+      }
+    },
+    "contact": {
+      "title": "Neem Nu Contact Op"
+    },
+    "copyright": "Alle Rechten Voorbehouden",
+    "privacy": "Privacybeleid",
+    "terms": "Servicevoorwaarden",
+    "centerName": "stichtingmostakbal"
+  },
+
+  "nav": {
+    "home": "Home",
+    "projects": "Onze Projecten",
+    "about": "Over",
+    "contact": "Contact"
+  },
+  "heroProjects": {
+    "title": "Onze Projecten",
+    "subtitle": "Vrede en gemeenschap opbouwen door duurzame humanitaire initiatieven",
+    "btn": "Bekijk Projecten"
+  },
+  "aboutProjects": {
+    "title": "Over Onze Projecten",
+    "description": "stichtingmostakbal zet zich in voor het ondersteunen van duurzame humanitaire projecten die blijvende positieve verandering in onze gemeenschappen creëren. Door onderwijs, gemeenschapsontwikkeling en vredesopbouwinitiatieven werken we samen om dialoog, begrip en wederzijds respect tussen alle mensen te bevorderen.",
+    "peace": "Vredesopbouw",
+    "peaceDesc": "Ruimtes creëren voor dialoog en begrip",
+    "education": "Onderwijs",
+    "educationDesc": "Gemeenschappen versterken door kennis",
+    "development": "Ontwikkeling",
+    "developmentDesc": "Duurzame groei en welvaart"
+  },
+  "categories": {
+    "title": "Projectcategorieën",
+    "education": "Onderwijs",
+    "educationDesc": "Programma's gericht op kwaliteitsonderwijs en vaardigheidsontwikkeling voor alle leeftijden",
+    "community": "Gemeenschapsontwikkeling",
+    "communityDesc": "Initiatieven die gemeenschapsbanden en lokale economieën versterken",
+    "peacebuilding": "Vredesopbouw",
+    "peacebuildingDesc": "Dialoogprogramma's en initiatieven voor conflictoplossing",
+    "health": "Gezondheid & Welzijn",
+    "healthDesc": "Toegang tot gezondheidszorg en welzijnsprogramma's voor achtergestelde bevolkingsgroepen",
+    "environment": "Milieu",
+    "environmentDesc": "Projecten voor duurzaam natuurbehoud en klimaatactie"
+  },
+  "featured": {
+    "title": "Uitgelichte Projecten",
+    "readMore": "Lees Meer",
+    "donate": "Doneer Nu",
+    "beneficiaries": "Begunstigden",
+    "progress": "Voortgang"
+  },
+  "impact": {
+    "title": "Onze Impact",
+    "projects": "Voltooide Projecten",
+    "beneficiaries": "Bereikte Begunstigden",
+    "volunteers": "Actieve Vrijwilligers",
+    "communities": "Bediende Gemeenschappen"
+  },
+  "cta": {
+    "title": "Doe Mee en Maak een Verschil",
+    "description": "Uw steun helpt ons onze missie voort te zetten om vrede op te bouwen en dialoog te bevorderen. Of het nu gaat om vrijwilligerswerk, donaties of het verspreiden van bewustzijn, elke bijdrage telt.",
+    "button": "Doe Mee"
+  },
+  "footerProjects": {
+    "quickLinks": "Snelle Links",
+    "contact": "Contact",
+    "followUs": "Volg Ons",
+    "rights": "Alle rechten voorbehouden"
+  },
+
+  "blog": {
+    "title": "Onze Blog",
+    "search": "Zoek een artikel",
+    "searchPlaceholder": "Zoek artikelen...",
+    "categories": "Categorieën",
+    "tags": "Tags",
+    "recentPosts": "Recente Berichten",
+    "readMore": "Lees Meer",
+    "category": "Categorie",
+    "date": "Datum"
+  },
+
+  "articlePage": {
+    "article": {
+      "by": "Door",
+      "published": "Gepubliceerd",
+      "category": "Categorie",
+      "tags": "Tags",
+      "share": "Deel dit artikel",
+      "shareOn": "Deel op",
+      "relatedArticles": "Gerelateerde Artikelen",
+      "comments": "Reacties",
+      "leaveComment": "Laat een reactie achter",
+      "name": "Naam",
+      "email": "E-mail",
+      "comment": "Reactie",
+      "submit": "Verzenden",
+      "readMore": "Lees Meer"
+    },
+    "sidebar": {
+      "search": "Zoek artikelen",
+      "categories": "Categorieën",
+      "tags": "Tags",
+      "noResults": "Geen artikelen gevonden"
+    }
+  },
+
+  "contact": {
+    "title": "Neem Contact Op",
+    "subtitle": "We horen graag van je. Stuur ons een bericht!",
+    "address": "Adres",
+    "addressValue": "123 Business Street, Suite 100, New York, NY 10001",
+    "phone": "Telefoon",
+    "branchName": "Filiaalnaam",
+    "phoneValue": "+1 (555) 123-4567",
+    "email": "E-mail",
+    "emailValue": "hello@company.com",
+    "haveQuestions": "Heb je vragen?",
+    "haveQuestionsDesc": "We zijn er om te helpen. Neem op elk moment contact met ons op.",
+    "form": {
+      "name": "Uw Naam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "message": "Typ uw bericht",
+      "submit": "Bericht Verzenden"
+    }
+  },
+
+  "projectPage": {
+    "projectGallery": "Projectgalerij",
+    "hero": {
+      "donateNow": "Doneer Nu",
+      "learnMore": "Meer Informatie"
+    },
+    "overview": {
+      "title": "Projectoverzicht",
+      "startDate": "Startdatum",
+      "endDate": "Einddatum",
+      "status": "Status"
+    },
+    "impact": {
+      "title": "Projectimpact",
+      "description": "Zie het meetbare verschil dat ons project maakt in gemeenschappen"
+    },
+    "donation": {
+      "title": "Steun Dit Project",
+      "description": "Elke donatie brengt schoon water dichter bij degenen die het nodig hebben",
+      "raised": "opgehaald",
+      "goal": "doel",
+      "toReachGoal": "om doel te bereiken",
+      "selectAmount": "Selecteer een bedrag:",
+      "customAmount": "Of voer een aangepast bedrag in:",
+      "donateNow": "Doneer Nu"
+    },
+    "team": {
+      "title": "Ontmoet Ons Team"
+    },
+    "testimonials": {
+      "title": "Stemmen uit het Veld",
+      "description": "Hoor direct van de gemeenschappen die we dienen"
+    },
+    "relatedProjects": {
+      "title": "Gerelateerde Projecten"
+    },
+    "contact": {
+      "title": "Doe Mee",
+      "description": "Heb je vragen? Wil je vrijwilligerswerk doen? We horen graag van je.",
+      "phone": "Telefoon",
+      "email": "E-mail",
+      "location": "Locatie",
+      "volunteer": "Vrijwilliger",
+      "contactUs": "Neem Contact Op"
+    }
+  },
+
+  "newsPage": {
+    "pageTitle": "Centrumnieuws",
+    "search": "Zoek nieuws...",
+    "categories": "Categorieën",
+    "generalNews": "Algemeen Nieuws",
+    "events": "Evenementen",
+    "announcements": "Aankondigingen",
+    "recentArticles": "Recente Artikelen",
+    "readMore": "Lees Meer",
+    "published": "Gepubliceerd",
+    "pagination": "Pagina",
+    "of": "van"
+  },
+
+  "teamSiwper": {
+    "title": "Ons Gespecialiseerde Team",
+    "subtitle": "Ontmoet de centrumleden die werken om begunstigden te dienen en de initiatieven van de liefdadigheidsvereniging te ondersteunen met de hoogste niveaus van professionaliteit en toewijding."
+  },
+
+  "soloNewsPage": {
+    "copied_to_clipboard": "Link gekopieerd naar klembord",
+    "likes": "Likes",
+    "liked": "Geliket",
+    "like": "Like",
+    "share": "Delen",
+    "sidebar": {
+      "article_stats": "Artikelstatistieken",
+      "views": "Weergaven",
+      "shares": "Delen",
+      "likes": "Likes",
+      "categories": "Categorieën",
+      "tags": "Tags"
+    }
+  }
+}

@@ -14,6 +14,7 @@ interface linkType {
   id?: number;
   link_title_en: string;
   link_title_ar: string;
+  link_title_nl: string;
   link_url: string;
   list_id?: number;
 }
@@ -53,6 +54,12 @@ export default function FooterLinks() {
           label: "العنوان (AR)",
         },
         {
+          name: "link_title_nl",
+          value: selectedLink.link_title_nl,
+          type: "short-text",
+          label: "العنوان (NL)",
+        },
+        {
           name: "link_url",
           value: selectedLink.link_url,
           type: "short-text",
@@ -87,6 +94,7 @@ export default function FooterLinks() {
       list_id: listId,
       link_title_en: "",
       link_title_ar: "",
+      link_title_nl: "",
       link_url: "",
     });
     setSelectedListId(listId);
@@ -194,7 +202,8 @@ export default function FooterLinks() {
                       // href={link.link_url || "/"}
                       className="flex-1 text-white"
                     >
-                      {link.link_title_en} / {link.link_title_ar}
+                      {link.link_title_en ?? ""} / {link.link_title_ar ?? ""} /
+                      {link.link_title_nl ?? ""}
                     </div>
                     <div className="flex  gap-3">
                       <button

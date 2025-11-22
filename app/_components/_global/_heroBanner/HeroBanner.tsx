@@ -15,7 +15,9 @@ export default function HeroBanner({ imageSrc }: Props) {
 
   // Remove language prefix (en/ar) if exists
   const cleanSegments =
-    segments[0] === "en" || segments[0] === "ar" ? segments.slice(1) : segments;
+    segments[0] === "en" || segments[0] === "ar" || segments[0] === "nl"
+      ? segments.slice(1)
+      : segments;
 
   return (
     <div className="w-full lg:mt-20 min-h-[75vh] flex flex-col items-center justify-center relative text-white">

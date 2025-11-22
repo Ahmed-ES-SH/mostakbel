@@ -24,7 +24,7 @@ interface Props {
   setLocation: (loc: Location) => void;
   showMap: boolean;
   onClose: () => void;
-  locale: "en" | "ar";
+  locale: "en" | "ar" | "nl";
 }
 
 // 📍 الموقع الافتراضي (دمشق - سوريا)

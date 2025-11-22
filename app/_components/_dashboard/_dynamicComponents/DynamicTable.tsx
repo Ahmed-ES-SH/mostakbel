@@ -182,7 +182,7 @@ export default function DynamicTable<
   ///////////////////////////////////////////
 
   return (
-    <div dir="rtl" className="w-full min-h-screen mb-8 pt-8 hidden-scrollbar">
+    <div className="w-full min-h-screen mb-8 pt-8 hidden-scrollbar">
       {searchState && (
         <SearchInput
           handleSearch={fetchSearchData}
@@ -236,7 +236,7 @@ export default function DynamicTable<
               currentData.map((item: any, index) => (
                 <motion.tr
                   key={index}
-                  className="border-b transition-all hover:bg-secondery_dash"
+                  className="border-b text-right transition-all hover:bg-secondery_dash"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}

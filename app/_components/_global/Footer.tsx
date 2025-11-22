@@ -95,6 +95,8 @@ export default function Footer({ socialData }: props) {
                         {/* استخدم اللغة الحالية */}
                         {locale === "ar"
                           ? link.link_title_ar
+                          : locale === "nl"
+                          ? link.link_title_nl
                           : link.link_title_en ?? ""}
                       </LocaleLink>
                     </li>

@@ -104,7 +104,7 @@ export default function EditTextPopup({
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
           style={{ direction: "rtl" }}
-          className="fixed top-0 left-0 w-full min-h-screen flex items-center justify-center bg-black/50 backdrop-blur-md z-99999"
+          className="fixed max-h-[60vh] overflow-y-auto top-0 left-0 w-full min-h-screen flex items-center justify-center bg-black/50 backdrop-blur-md z-99999"
         >
           <motion.div
             initial={{ opacity: 0, y: -500 }}

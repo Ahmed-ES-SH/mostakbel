@@ -1,4 +1,5 @@
 {
+  "proxy": "https://backend-v2.borsanacademy.com",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,

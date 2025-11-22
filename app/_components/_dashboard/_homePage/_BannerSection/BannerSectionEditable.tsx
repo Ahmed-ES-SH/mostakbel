@@ -76,6 +76,7 @@ export default function BannerSectionEditable({
     setSelectedCard({
       en: card[field]?.en ?? "",
       ar: card[field]?.ar ?? "",
+      nl: card[field]?.nl ?? "",
     });
 
     setIsPopupOpen(true);
@@ -94,7 +95,7 @@ export default function BannerSectionEditable({
   const inputs = useMemo(() => {
     if (!fieldType) return [];
 
-    return ["en", "ar"].map((lang) => ({
+    return ["en", "ar", "nl"].map((lang) => ({
       name: `${fieldType}_${lang}`,
       value: (selectedCard as any)[lang],
       type: "short-text" as const,
@@ -109,6 +110,7 @@ export default function BannerSectionEditable({
     setSelectedCard({
       en: head.title?.en ?? "",
       ar: head.title?.ar ?? "",
+      nl: head.title?.nl ?? "",
     });
 
     setIsPopupOpen(true);
@@ -125,6 +127,7 @@ export default function BannerSectionEditable({
         title: {
           en: selectedCard.en ?? "",
           ar: selectedCard.ar ?? "",
+          nl: selectedCard.nl ?? "",
         },
       }));
 
@@ -141,6 +144,7 @@ export default function BannerSectionEditable({
         [fieldType]: {
           en: selectedCard.en ?? "",
           ar: selectedCard.ar ?? "",
+          nl: selectedCard.nl ?? "",
         },
       };
 

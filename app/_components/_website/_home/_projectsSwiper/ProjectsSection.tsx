@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import ProjectCard from "./ProjectCard";
-import { projectImages, translations } from "./mockData";
+import { translations } from "./mockData";
 import LocaleLink from "@/app/_components/_global/LocaleLink";
 import { ProjectType } from "@/app/_components/_dashboard/_projects/_projectCard/ProjectCard";
 import { useLocale } from "@/app/_hooks/useLocale";

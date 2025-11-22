@@ -2,26 +2,29 @@
 import { NextResponse } from "next/server";
 import type { NextFetchEvent, NextRequest } from "next/server";
 
-// ✅ export function proxy (named)
+// Supported locales
+const SUPPORTED_LOCALES = ["nl", "en", "ar"];
+const DEFAULT_LOCALE = "nl"; // Set Dutch as the default
+
 export function proxy(request: NextRequest, _event: NextFetchEvent) {
   const { pathname } = request.nextUrl;
 
-  // Extract locale from the first segment (e.g. /ar/home → "ar")
+  // Extract first segment: /nl/home → "nl"
   const locale = pathname.split("/")[1];
 
-  // If locale is invalid or missing, redirect to default
-  if (!["en", "ar"].includes(locale)) {
-    const newUrl = new URL(`/en${pathname}`, request.url);
+  // If locale is missing OR invalid → redirect to default locale
+  if (!SUPPORTED_LOCALES.includes(locale)) {
+    const newUrl = new URL(`/${DEFAULT_LOCALE}${pathname}`, request.url);
     return NextResponse.redirect(newUrl);
   }
 
-  // Add locale header for server components
+  // Add locale header for server-side usage
   const response = NextResponse.next();
   response.headers.set("x-locale", locale);
   return response;
 }
 
-// ✅ required config
+// Middleware matcher
 export const config = {
   matcher: ["/((?!_next|api|.*\\..*).*)"],
 };

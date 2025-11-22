@@ -3,7 +3,6 @@
 import { useLocale } from "@/app/_hooks/useLocale";
 import { useTranslation } from "@/app/_hooks/useTranslation";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { FaPlay } from "react-icons/fa";
 import HelpStats from "./HelpStats";
 import { TextType } from "@/app/_components/_dashboard/_homePage/_aboutSectionDash/AboutSectionDash";
@@ -30,14 +29,11 @@ interface props {
 
 export default function HelpSection({ data }: props) {
   const locale = useLocale();
-  const t = useTranslation("helpSection");
 
   const [videoPopup, setVideoPopup] = useState(false);
 
   const { texts, stats, image_path, video_path } = data;
 
-  console.log(video_path);
-  console.log(data);
 
   return (
     <section className="bg-primary-color text-white relative overflow-hidden py-16 px-6 md:px-12">

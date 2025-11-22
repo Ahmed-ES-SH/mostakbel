@@ -12,8 +12,8 @@ import LocaleLink from "@/app/_components/_global/LocaleLink";
 type Service = {
   icon: string;
   icon_style: string;
-  title: { en: string; ar: string };
-  description: { en: string; ar: string };
+  title: { en: string; ar: string; nl: string };
+  description: { en: string; ar: string; nl: string };
 };
 
 interface props {
@@ -37,6 +37,9 @@ export default function CharityServices({ data }: props) {
     1: "size-12 text-green-500",
     2: "size-12 text-red-500",
   };
+
+  console.log(locale);
+  console.log(data);
 
   return (
     <section className="relative py-20 bg-[url('/website/paper-bg.png')] bg-cover bg-center">

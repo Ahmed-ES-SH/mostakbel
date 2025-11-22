@@ -15,6 +15,7 @@ export default function ProjectsCategoriesDashboardPage() {
     "صورة القسم",
     "العنوان (EN)",
     "العوان (AR)",
+    "العنوان (NL)",
     "لون الخلفية",
     "ايقونة القسم",
     "تاريخ الانشاء",
@@ -24,6 +25,7 @@ export default function ProjectsCategoriesDashboardPage() {
     { key: "image", cellType: "image" },
     { key: "title_en", cellType: "text" },
     { key: "title_ar", cellType: "text" },
+    { key: "title_nl", cellType: "text" },
     { key: "bg_color", cellType: "color" },
     { key: "icon_name", cellType: "icon" },
     {

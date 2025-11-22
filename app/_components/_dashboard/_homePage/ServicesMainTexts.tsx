@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 interface TextType {
   en: string;
   ar: string;
+  nl: string;
 }
 
 interface titlesType {
@@ -26,6 +27,7 @@ export default function ServicesMainTexts({ titles, setTitles }: Props) {
   const [selectedText, setSelectedText] = useState<TextType>({
     en: "",
     ar: "",
+    nl: "",
   });
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -33,11 +35,12 @@ export default function ServicesMainTexts({ titles, setTitles }: Props) {
 
   /** Open popup with selected text */
   const handleSelectMainText = (type: FiledType, text: TextType) => {
-    const safeText = text ?? { en: "", ar: "" };
+    const safeText = text ?? { en: "", ar: "", nl: "" };
 
     setSelectedText({
       en: safeText.en || "",
       ar: safeText.ar || "",
+      nl: safeText.nl || "",
     });
 
     setFiledType(type);
@@ -58,9 +61,9 @@ export default function ServicesMainTexts({ titles, setTitles }: Props) {
   const inputs = useMemo(() => {
     if (!filedType) return [];
 
-    return ["en", "ar"].map((lang) => ({
+    return ["en", "ar", "nl"].map((lang) => ({
       name: `${filedType}_${lang}`,
-      value: selectedText[lang as "en" | "ar"],
+      value: selectedText[lang as "en" | "ar" | "nl"],
       type: "short-text",
       label:
         filedType === "title"
@@ -86,7 +89,7 @@ export default function ServicesMainTexts({ titles, setTitles }: Props) {
 
   const handleClose = () => {
     setIsPopupOpen(false);
-    setSelectedText({ en: "", ar: "" });
+    setSelectedText({ en: "", ar: "", nl: "" });
   };
 
   return (

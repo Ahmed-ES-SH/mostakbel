@@ -117,7 +117,13 @@ export default function FAQSection({ data, faqs }: props) {
                 className="flex items-center  gap-2 px-6 py-3 bg-linear-to-r from-teal-500 to-teal-600 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-shadow"
               >
                 <RiHandHeartLine className="w-5 h-5" />
-                <span>{locale === "en" ? "Donate Now" : "تبرع الآن"}</span>
+                <span>
+                  {locale === "en"
+                    ? "Donate Now"
+                    : locale === "nl"
+                    ? "Doner Nu"
+                    : "تبرع الآن"}
+                </span>
               </motion.button>
               <p className="text-sm text-gray-600">{texts.footer[locale]}</p>
             </motion.div>

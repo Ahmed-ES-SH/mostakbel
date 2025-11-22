@@ -9,7 +9,7 @@ import { ProjectType } from "@/app/_components/_dashboard/_projects/_projectCard
 
 interface props {
   project: ProjectType;
-  locale: "en" | "ar";
+  locale: "en" | "ar" | "nl";  
 }
 
 export default function ProjectCard({ project, locale }: props) {

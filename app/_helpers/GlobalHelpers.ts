@@ -57,7 +57,7 @@ export function decryptToken(encryptedToken: string) {
 
 export function formatTime(
   dateInput: string | Date,
-  locale: "en" | "ar" = "en"
+  locale: "en" | "ar" | "nl" = "en"
 ): string {
   const date = typeof dateInput === "string" ? parseISO(dateInput) : dateInput;
 
@@ -101,7 +101,7 @@ export const formatDate = (dateString: string) => {
 
 export function formatTimewithLocale(
   dateInput: string | Date,
-  locale: "en" | "ar" = "en"
+  locale: "en" | "ar" | "nl" = "en"
 ): string {
   const date = typeof dateInput === "string" ? parseISO(dateInput) : dateInput;
 

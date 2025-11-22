@@ -16,7 +16,7 @@ import { toast } from "sonner";
 import { instance } from "@/app/_helpers/axios";
 import { VscLoading } from "react-icons/vsc";
 
-type textType = { en: string; ar: string };
+type textType = { en: string; ar: string; nl: string };
 
 type Service = {
   icon: string;
@@ -42,8 +42,8 @@ export default function ServicesSectionDash({ data, texts }: props) {
 
   const [titles, setTitles] = useState(
     texts ?? {
-      title: { en: "", ar: "" },
-      subtitle: { en: "", ar: "" },
+      title: { en: "", ar: "", nl: "" },
+      subtitle: { en: "", ar: "", nl: "" },
     }
   );
   const [services, setServices] = useState(data ?? []);
@@ -88,7 +88,7 @@ export default function ServicesSectionDash({ data, texts }: props) {
     const config = fieldConfig[filedType];
     if (!config) return [];
 
-    return ["en", "ar"].map((lang) => ({
+    return ["en", "ar", "nl"].map((lang) => ({
       name: `${filedType}_${lang}`,
       value: selectedService[filedType]?.[lang] ?? "",
       type: config.type,
@@ -107,6 +107,7 @@ export default function ServicesSectionDash({ data, texts }: props) {
       [type]: {
         en: text.en || "",
         ar: text.ar || "",
+        nl: text.nl || "",
       },
     }));
     setActiveServiceIndex(index);
@@ -126,6 +127,7 @@ export default function ServicesSectionDash({ data, texts }: props) {
         [filedType]: {
           en: selectedService[filedType].en,
           ar: selectedService[filedType].ar,
+          nl: selectedService[filedType].nl,
         },
       };
 

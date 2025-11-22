@@ -25,7 +25,7 @@ export default function BottomNavbar({ hideWhitePart }: props) {
 
   return (
     <div
-      className={`md:c-container overflow-hidden w-full rounded-full  md:absolute ${
+      className={`md:c-container w-full rounded-full  md:absolute ${
         !hideWhitePart ? "md:top-[95%]" : "md:top-1/2"
       } md:left-1/2 md:-translate-x-1/2 flex items-center justify-between gap-2`}
     >
@@ -70,7 +70,13 @@ export default function BottomNavbar({ hideWhitePart }: props) {
         >
           <div className="flex items-center gap-2 relative order-1">
             <IoMdHeart />
-            <p className="">{locale == "en" ? "Donate Now" : "تبرع الأن"}</p>
+            <p className="">
+              {locale == "en"
+                ? "Donate Now"
+                : locale == "nl"
+                ? "Doner Nu"
+                : "تبرع الأن"}
+            </p>
           </div>
           <span className="order-2 w-full h-full  group-hover:h-0 duration-300 absolute top-0 left-0 bg-light-primary-color"></span>
         </button>

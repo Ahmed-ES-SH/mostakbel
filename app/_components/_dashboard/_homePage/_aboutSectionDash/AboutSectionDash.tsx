@@ -10,7 +10,7 @@ import { instance } from "@/app/_helpers/axios";
 import BannerSectionEditable from "../_BannerSection/BannerSectionEditable";
 import { VscLoading } from "react-icons/vsc";
 
-export type TextType = { en: string; ar: string };
+export type TextType = { en: string; ar: string; nl: string };
 
 export type AboutTexts = {
   badge: TextType;
@@ -43,15 +43,17 @@ export default function AboutSectionDash({
 }: Props) {
   // Safe defaults
   const defaultTexts: AboutTexts = {
-    badge: { en: "About Us", ar: "معلومات عنا" },
-    title: { en: "Donat", ar: "التبرع" },
+    badge: { en: "About Us", ar: "معلومات عنا", nl: "Over ons" },
+    title: { en: "Donat", ar: "التبرع", nl: "Donat" },
     heading: {
       en: "We Believe That We Can Save More Life's With You",
       ar: "نؤمن بأننا نستطيع إنقاذ المزيد من الأرواح معك",
+      nl: "",
     },
     description: {
       en: "Dialogue and Civil Peace Center is the largest global crowdfunding community connecting nonprofits, donors, and companies...",
       ar: "مركز الحوار والسلم الأهلي هو أكبر مجتمع للتمويل الجماعي العالمي يربط المنظمات غير الربحية والمانحين والشركات...",
+      nl: "",
     },
   };
 
@@ -63,6 +65,7 @@ export default function AboutSectionDash({
   const [selectedText, setSelectedText] = useState<TextType>({
     en: "",
     ar: "",
+    nl: "",
   });
   const [charities, setChirtys] = useState(charitiesData ?? []);
   const [bannerData, setBannerData] = useState(banner ?? []);
@@ -78,8 +81,12 @@ export default function AboutSectionDash({
 
   // Open popup for a specific field
   const handleSelectMainText = (type: FiledType, text?: TextType) => {
-    const safeText = text ?? { en: "", ar: "" };
-    setSelectedText({ en: safeText.en || "", ar: safeText.ar || "" });
+    const safeText = text ?? { en: "", ar: "", nl: "" };
+    setSelectedText({
+      en: safeText.en || "",
+      ar: safeText.ar || "",
+      nl: safeText.nl || "",
+    });
     setFiledType(type);
     setIsPopupOpen(true);
   };
@@ -87,7 +94,7 @@ export default function AboutSectionDash({
   // Popup input handler (name format: `${filedType}_${lang}`, but we only need the lang here)
   const handleInputChange = (name: string, value: string | number) => {
     const parts = name.split("_");
-    const lang = parts[1] as "en" | "ar";
+    const lang = parts[1] as "en" | "ar" | "nl";
     setSelectedText((prev) => ({ ...prev, [lang]: String(value) }));
   };
 
@@ -103,9 +110,9 @@ export default function AboutSectionDash({
       aboutMore: "زر المزيد",
     };
 
-    return ["en", "ar"].map((lang) => ({
+    return ["en", "ar", "nl"].map((lang) => ({
       name: `${filedType}_${lang}`,
-      value: selectedText[lang as "en" | "ar"] ?? "",
+      value: selectedText[lang as "en" | "ar" | "nl"] ?? "",
       type: filedType === "description" ? "long-text" : "short-text",
       label: `${labelMap[filedType] ?? filedType} (${lang.toUpperCase()})`,
     }));
@@ -120,6 +127,7 @@ export default function AboutSectionDash({
       [filedType]: {
         en: selectedText.en,
         ar: selectedText.ar,
+        nl: selectedText.nl,
       },
     }));
 
@@ -128,7 +136,7 @@ export default function AboutSectionDash({
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
-    setSelectedText({ en: "", ar: "" });
+    setSelectedText({ en: "", ar: "", nl: "" });
   };
 
   // Image file select
@@ -181,7 +189,7 @@ export default function AboutSectionDash({
     }
   };
 
-  console.log(bannerData);
+  console.log(textsState);
 
   return (
     <div className="min-h-[90vh] overflow-hidden xl:pt-20 mb-10 w-full bg-liner-to-br from-gray-50 to-gray-100">

@@ -1,4 +1,4 @@
-export type localeType = "en" | "ar";
+export type localeType = "en" | "ar" | "nl";
 
 interface item {
   name: string;

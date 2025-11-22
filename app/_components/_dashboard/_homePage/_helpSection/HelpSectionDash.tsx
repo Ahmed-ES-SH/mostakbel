@@ -58,6 +58,7 @@ export default function HelpSectionDash({
   const [selected, setSelected] = useState<any>({
     ar: "",
     en: "",
+    nl: "",
     value: "",
   });
 
@@ -79,13 +80,18 @@ export default function HelpSectionDash({
     setActiveIndex(index);
 
     if (type === "head_title") {
-      setSelected({ ar: head.title.ar, en: head.title.en });
+      setSelected({ ar: head.title.ar, en: head.title.en, nl: head.title.nl });
     } else if (type === "head_description") {
-      setSelected({ ar: head.description.ar, en: head.description.en });
+      setSelected({
+        ar: head.description.ar,
+        en: head.description.en,
+        nl: head.description.nl,
+      });
     } else if (type === "stat_title" && index !== null) {
       setSelected({
         ar: localStats[index].title.ar,
         en: localStats[index].title.en,
+        nl: localStats[index].title.nl,
       });
     } else if (type === "stat_value" && index !== null) {
       setSelected({
@@ -123,11 +129,11 @@ export default function HelpSectionDash({
       ];
     }
 
-    return ["ar", "en"].map((lang) => ({
+    return ["ar", "en", "nl"].map((lang) => ({
       name: lang,
       value: selected[lang],
       label: `النص (${lang.toUpperCase()})`,
-      type: "short-text",
+      type: fieldType !== "head_description" ? "short-text" : "long-text",
     }));
   }, [fieldType, selected]);
 
@@ -138,12 +144,12 @@ export default function HelpSectionDash({
     if (fieldType === "head_title") {
       setHead((prev) => ({
         ...prev,
-        title: { ar: selected.ar, en: selected.en },
+        title: { ar: selected.ar, en: selected.en, nl: selected.nl },
       }));
     } else if (fieldType === "head_description") {
       setHead((prev) => ({
         ...prev,
-        description: { ar: selected.ar, en: selected.en },
+        description: { ar: selected.ar, en: selected.en, nl: selected.nl },
       }));
     } else if (fieldType === "stat_title" && activeIndex !== null) {
       setLocalStats((prev) => {
@@ -151,6 +157,7 @@ export default function HelpSectionDash({
         clone[activeIndex].title = {
           ar: selected.ar,
           en: selected.en,
+          nl: selected.nl,
         };
         return clone;
       });
@@ -194,7 +201,7 @@ export default function HelpSectionDash({
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
-    setSelected({ ar: "", en: "", value: "" });
+    setSelected({ ar: "", en: "", nl: "", value: "" });
   };
 
   return (

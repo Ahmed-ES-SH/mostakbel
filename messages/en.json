@@ -1,22 +1,22 @@
 {
   "mainMeta": {
-    "title": "Dialogue and Civil Peace Center",
+    "title": "stichtingmostakbal",
     "description": "A charitable platform dedicated to promoting dialogue and civil peace in Syria, supporting humanitarian and development projects that strengthen community cooperation and solidarity."
   },
   "centerBranchesMeta": {
-    "title": "Our Centers & Branches — Dialogue and Civil Peace Center",
+    "title": "Our Centers & Branches — stichtingmostakbal",
     "description": "Find our regional centers and branches across Syria providing humanitarian aid, dialogue programs, and community support. Contact details, opening hours, and available services."
   },
   "blogMeta": {
-    "title": "Blog — Dialogue and Civil Peace Center",
+    "title": "Blog — stichtingmostakbal",
     "description": "Read news, project updates, and expert articles on community development, reconciliation, and civil peace initiatives implemented by our center in Syria."
   },
   "aboutMeta": {
-    "title": "About Us — Dialogue and Civil Peace Center",
+    "title": "About Us — stichtingmostakbal",
     "description": "Learn about our mission, vision, team and history. We run humanitarian and development projects aimed at strengthening social cohesion and community resilience in Syria."
   },
   "newsMeta": {
-    "title": "News & Press — Dialogue and Civil Peace Center",
+    "title": "News & Press — stichtingmostakbal",
     "description": "Latest news, press releases and announcements about our humanitarian projects, events and community initiatives across Syria."
   },
   "ourwrokMeta": {
@@ -104,7 +104,7 @@
     "copyright": "All Rights Reserved",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "centerName": "Dialogue and Civil Peace Center"
+    "centerName": "stichtingmostakbal"
   },
 
   "nav": {
@@ -120,7 +120,7 @@
   },
   "aboutProjects": {
     "title": "About Our Projects",
-    "description": "The Center for Dialogue and Civil Peace is committed to supporting sustainable humanitarian projects that create lasting positive change in our communities. Through education, community development, and peacebuilding initiatives, we work together to foster dialogue, understanding, and mutual respect among all people.",
+    "description": "The stichtingmostakbal is committed to supporting sustainable humanitarian projects that create lasting positive change in our communities. Through education, community development, and peacebuilding initiatives, we work together to foster dialogue, understanding, and mutual respect among all people.",
     "peace": "Peace Building",
     "peaceDesc": "Creating spaces for dialogue and understanding",
     "education": "Education",

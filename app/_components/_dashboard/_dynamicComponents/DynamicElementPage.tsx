@@ -154,15 +154,7 @@ export default function DynamicElementPage({
         formData.append("location", JSON.stringify(location));
       }
 
-      const response = await instance.post(
-        `${updateEndPoint}/${id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await instance.post(`${updateEndPoint}/${id}`, formData);
 
       if (response.status === 200 || response.status === 204) {
         toast.success("Updated successfully");

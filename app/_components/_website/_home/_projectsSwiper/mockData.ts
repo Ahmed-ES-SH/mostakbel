@@ -3,19 +3,17 @@ interface Translations {
     sectionLabel: string;
     sectionTitle: string;
     viewAllButton: string;
-    projects: Array<{
-      title: string;
-      category: string;
-    }>;
+    
   };
   en: {
     sectionLabel: string;
     sectionTitle: string;
     viewAllButton: string;
-    projects: Array<{
-      title: string;
-      category: string;
-    }>;
+  };
+  nl: {
+    sectionLabel: string;
+    sectionTitle: string;
+    viewAllButton: string;
   };
 }
 
@@ -25,29 +23,19 @@ export const translations: Translations = {
     sectionLabel: "Complete Projects",
     sectionTitle: "Our Recent Project",
     viewAllButton: "View All Projects",
-    projects: [
-      { title: "Child Educations", category: "Charity & Fundraising" },
-      { title: "Healthcare Access", category: "Medical Support" },
-      { title: "Clean Water Initiative", category: "Infrastructure" },
-      { title: "Women Empowerment", category: "Skills Training" },
-      { title: "Food Security Program", category: "Nutrition & Health" },
-      { title: "Youth Development", category: "Education & Training" },
-    ],
   },
   ar: {
     sectionLabel: "المشاريع المكتملة",
     sectionTitle: "مشروعنا الأخير",
     viewAllButton: "عرض جميع المشاريع",
-    projects: [
-      { title: "تعليم الأطفال", category: "الأعمال الخيرية وجمع التبرعات" },
-      { title: "الوصول إلى الرعاية الصحية", category: "الدعم الطبي" },
-      { title: "مبادرة المياه النظيفة", category: "البنية التحتية" },
-      { title: "تمكين المرأة", category: "التدريب على المهارات" },
-      { title: "برنامج الأمن الغذائي", category: "التغذية والصحة" },
-      { title: "تنمية الشباب", category: "التعليم والتدريب" },
-    ],
+  },
+  nl: {
+    sectionLabel: "Voltooide Projecten",
+    sectionTitle: "Ons Recente Project",
+    viewAllButton: "Bekijk Alle Projecten",
   },
 };
+
 
 // Mock project data
 export const projectImages = [

@@ -64,6 +64,7 @@ export default function Navbar({ socialData }: props) {
           title: {
             en: "Locate Address:",
             ar: "العنوان:",
+            nl: "Adres:",
           },
           value: socialData?.address,
         },
@@ -71,6 +72,7 @@ export default function Navbar({ socialData }: props) {
           title: {
             en: "Call us any time:",
             ar: "اتصل بنا في أي وقت:",
+            nl: "Bel ons op elk moment:",
           },
           value: socialData?.whatsapp_number,
         },
@@ -78,6 +80,7 @@ export default function Navbar({ socialData }: props) {
           title: {
             en: "Email us any time:",
             ar: "راسلنا في أي وقت:",
+            nl: "E-mail ons op elk moment:",
           },
           value: socialData?.official_email,
         },

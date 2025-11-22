@@ -19,8 +19,8 @@ export default function SlideCard({ index, slide, t }: props) {
 
   const [videoPopup, setVideoPopup] = useState(false);
 
-  const title = locale == "ar" ? slide.title_ar : slide.title_en;
-  const subTitle = locale == "ar" ? slide.subTitle_ar : slide.subTitle_en;
+  const title = locale == "ar" ? slide.title_ar : locale == "nl" ? slide.title_nl : slide.title_en;
+  const subTitle = locale == "ar" ? slide.subTitle_ar : locale == "nl" ? slide.subTitle_nl : slide.subTitle_en;
   return (
     <div className="relative w-full h-full">
       {/* shape image */}

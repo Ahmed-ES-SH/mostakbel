@@ -22,7 +22,8 @@ export default function CharitiesSection({ charities, setChirtys }: props) {
   const [selectedCharityText, setSelectedCharityText] = useState<{
     en: string;
     ar: string;
-  }>({ en: "", ar: "" });
+    nl: string;
+  }>({ en: "", ar: "", nl: "" });
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [fieldType, setFieldType] = useState<fieldType>("");
 
@@ -53,6 +54,7 @@ export default function CharitiesSection({ charities, setChirtys }: props) {
     setSelectedCharityText({
       en: charity.text?.en || "",
       ar: charity.text?.ar || "",
+      nl: charity.text?.nl || "",
     });
     setFieldType("text");
     setIsPopupOpen(true);
@@ -71,7 +73,7 @@ export default function CharitiesSection({ charities, setChirtys }: props) {
   const inputs = useMemo(() => {
     if (!fieldType) return [];
 
-    return ["en", "ar"].map((lang) => ({
+    return ["en", "ar", "nl"].map((lang) => ({
       name: `${fieldType}_${lang}`,
       value: (selectedCharityText as any)[lang],
       type: "short-text" as const,
@@ -97,7 +99,7 @@ export default function CharitiesSection({ charities, setChirtys }: props) {
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
-    setSelectedCharityText({ en: "", ar: "" });
+    setSelectedCharityText({ en: "", ar: "", nl: "" });
   };
 
   return (
@@ -115,7 +117,8 @@ export default function CharitiesSection({ charities, setChirtys }: props) {
             >
               <div
                 onClick={() => handleShowIconPicker(idx)}
-                className={`${c.color} select-effect w-10 h-10 rounded-full flex items-center justify-center`}
+                style={{ backgroundColor: `${c.color}` }}
+                className={` select-effect w-10 h-10 rounded-full flex items-center justify-center`}
               >
                 <Icon className="text-white" />
               </div>

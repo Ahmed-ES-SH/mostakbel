@@ -64,7 +64,7 @@ export default function FAQSection({
       footer: "التذييل",
     };
 
-    return ["en", "ar"].map((lang) => ({
+    return ["en", "ar", "nl"].map((lang) => ({
       name: `${filedType}_${lang}`,
       value: (selectedText as any)[filedType]?.[lang] ?? "",
       type: "short-text",
@@ -119,8 +119,6 @@ export default function FAQSection({
       setUpdateLoading(false);
     }
   };
-
-  console.log(images);
 
   return (
     <>

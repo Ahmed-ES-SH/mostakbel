@@ -25,7 +25,7 @@ export default function EditNavTextPopup({
     if (isOpen) setForm(initialValue);
   }, [isOpen, initialValue]);
 
-  const handleInput = (key: "en" | "ar", value: string) => {
+  const handleInput = (key: "en" | "ar" | 'nl', value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
   };
 

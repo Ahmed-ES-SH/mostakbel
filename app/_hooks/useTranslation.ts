@@ -3,9 +3,10 @@
 import { useParams } from "next/navigation";
 import ar from "@/messages/ar.json";
 import en from "@/messages/en.json";
+import nl from "@/messages/nl.json";   
 
 // Get language type
-type Locale = "ar" | "en";
+type Locale = "ar" | "en" | "nl";
 
 // Infer translation type from your JSON
 type Messages = typeof ar;
@@ -19,7 +20,7 @@ export function useTranslation<N extends Namespace>(namespace: N) {
   const locale = (params?.locale as Locale) ?? "ar";
 
   // Select the correct translation file
-  const messages: Messages = locale === "en" ? en : ar;
+  const messages: Messages = locale === "en" ? en : locale === "nl" ? nl : ar;
 
   // Return the specific namespace object
   return messages[namespace];

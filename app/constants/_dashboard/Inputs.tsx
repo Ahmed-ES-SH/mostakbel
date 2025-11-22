@@ -199,6 +199,13 @@ export const addCategoryinputs = [
     placeholder: "أدخل عنوان القسم الجديد بالعربية",
   },
   {
+    name: "title_nl",
+    type: "text",
+    fildType: "short-text",
+    label: { ar: "العنوان (NL)", en: "" },
+    placeholder: "أدخل عنوان القسم الجديد بالهولندية",
+  },
+  {
     name: "bg_color",
     type: "color",
     fildType: "color-fild",
