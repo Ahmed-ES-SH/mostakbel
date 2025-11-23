@@ -19,8 +19,14 @@ export default function BottomNavbar({ hideWhitePart }: props) {
   const pathName = usePathname();
   const { logoSrc, navText } = useAppSelector((state) => state.variables);
 
+  const warningMessage = {
+    ar: "عفوا ستكون هذة الميزة متاحه قريبا انشاء الله .",
+    en: "Sorry this feature will be available soon .",
+    nl: "Sorry this feature will be available soon .",
+  };
+
   const donateNow = () => {
-    toast.warning("عفوا ستكون هذة الميزة متاحه قريبا انشاء الله .");
+    toast.warning(warningMessage[locale ?? "nl"]);
   };
 
   return (

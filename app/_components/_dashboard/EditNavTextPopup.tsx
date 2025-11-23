@@ -7,9 +7,9 @@ import { createPortal } from "react-dom";
 
 interface EditNavTextPopupProps {
   isOpen: boolean;
-  initialValue: { en: string; ar: string };
+  initialValue: { en: string; ar: string; nl: string };
   onClose: () => void;
-  onSave: (value: { en: string; ar: string }) => void;
+  onSave: (value: { en: string; ar: string; nl: string }) => void;
 }
 
 export default function EditNavTextPopup({
@@ -25,7 +25,7 @@ export default function EditNavTextPopup({
     if (isOpen) setForm(initialValue);
   }, [isOpen, initialValue]);
 
-  const handleInput = (key: "en" | "ar" | 'nl', value: string) => {
+  const handleInput = (key: "en" | "ar" | "nl", value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -64,6 +64,16 @@ export default function EditNavTextPopup({
               تعديل النص
             </h2>
 
+            {/* English Input */}
+            <div className="mb-4">
+              <label className="block mb-1 font-medium">النص الإنجليزي</label>
+              <textarea
+                value={form.en}
+                onChange={(e) => handleInput("en", e.target.value)}
+                className="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
             {/* Arabic Input */}
             <div className="mb-4">
               <label className="block mb-1 font-medium">النص العربي</label>
@@ -75,13 +85,14 @@ export default function EditNavTextPopup({
               />
             </div>
 
-            {/* English Input */}
+            {/* Arabic Input */}
             <div className="mb-4">
-              <label className="block mb-1 font-medium">النص الإنجليزي</label>
+              <label className="block mb-1 font-medium">النص الهولندى</label>
               <textarea
-                value={form.en}
-                onChange={(e) => handleInput("en", e.target.value)}
+                value={form.nl}
+                onChange={(e) => handleInput("nl", e.target.value)}
                 className="w-full border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                dir="ltr"
               />
             </div>
 

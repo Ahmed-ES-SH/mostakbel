@@ -35,6 +35,12 @@ export function ContactForm({ disabled = false }) {
       setIsSubmitting(true);
       const response = await instance.post(`/add-contact-message`, formData);
       if (response.status == 201) {
+        const sendMessage = {
+          ar: "تم ارسال رسالتك بنجاح",
+          en: "Your message has been sent successfully",
+          nl: "Your message has been sent successfully",
+        };
+        toast.success(sendMessage[locale ?? "nl"]);
         setFormData({ name: "", email: "", phone_number: "", message: "" });
       }
     } catch (error: any) {

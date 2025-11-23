@@ -151,7 +151,7 @@ export default function FAQ() {
   return (
     <>
       <div
-        style={{ direction: "rtl" }}
+        dir="ltr"
         className="w-[95%] max-md:w-full mt-16 mx-auto bg-gray-100 dark:bg-secend_dash dark:text-secend_text max-md:p-2 p-6"
       >
         <div className="w-full mx-auto bg-white dark:bg-secend_dash dark:text-secend_text p-6 max-md:p-3 rounded-lg shadow-md">

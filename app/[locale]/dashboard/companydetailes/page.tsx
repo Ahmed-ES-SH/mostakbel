@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import LoadingSpin from "@/app/_components/_global/LoadingSpin";
 import Img from "@/app/_components/_global/Img";
 import PlatformCustomizer from "@/app/_components/_dashboard/PlatformCustomizer";
-import { ImageType } from "@/app/_helpers/GlobalHelpers";
 
 export interface SectionData {
   id: string;
@@ -15,8 +14,10 @@ export interface SectionData {
   placeholder: string;
   contentEn: string;
   contentAr: string;
+  contentNl: string;
   titleEn: string;
   titleAr: string;
+  titleNl: string;
   image: File | string | null;
   ref: React.RefObject<HTMLInputElement | null>;
 }
@@ -33,8 +34,10 @@ export default function CompanyDetails() {
       placeholder: "القسم الأول",
       titleEn: "",
       titleAr: "",
+      titleNl: "",
       contentEn: "",
       contentAr: "",
+      contentNl: "",
       image: null,
       ref: useRef<HTMLInputElement>(null),
     },
@@ -44,8 +47,10 @@ export default function CompanyDetails() {
       placeholder: "القسم الثانى",
       titleEn: "",
       titleAr: "",
+      titleNl: "",
       contentEn: "",
       contentAr: "",
+      contentNl: "",
       image: null,
       ref: useRef<HTMLInputElement>(null),
     },
@@ -55,8 +60,10 @@ export default function CompanyDetails() {
       placeholder: "القسم الثالث",
       titleEn: "",
       titleAr: "",
+      titleNl: "",
       contentEn: "",
       contentAr: "",
+      contentNl: "",
       image: null,
       ref: useRef<HTMLInputElement>(null),
     },
@@ -66,8 +73,10 @@ export default function CompanyDetails() {
       placeholder: "القسم الرابع",
       titleEn: "",
       titleAr: "",
+      titleNl: "",
       contentEn: "",
       contentAr: "",
+      contentNl: "",
       image: null,
       ref: useRef<HTMLInputElement>(null),
     },
@@ -85,8 +94,10 @@ export default function CompanyDetails() {
         ...section,
         contentEn: data[`${section.id}_content_en`] || "",
         contentAr: data[`${section.id}_content_ar`] || "",
+        contentNl: data[`${section.id}_content_nl`] || "",
         titleAr: data[`${section.id}_title_ar`] || "",
         titleEn: data[`${section.id}_title_en`] || "",
+        titleNl: data[`${section.id}_title_nl`] || "",
         image: data[`${section.id}_image`] || null,
       }));
 
@@ -143,8 +154,10 @@ export default function CompanyDetails() {
         sections.forEach((section) => {
           formData.append(`${section.id}_content_en`, section.contentEn);
           formData.append(`${section.id}_content_ar`, section.contentAr);
+          formData.append(`${section.id}_content_nl`, section.contentNl);
           formData.append(`${section.id}_title_en`, section.titleEn);
           formData.append(`${section.id}_title_ar`, section.titleAr);
+          formData.append(`${section.id}_title_nl`, section.titleNl);
           if (section.image instanceof File) {
             formData.append(`${section.id}_image`, section.image);
           }
@@ -215,6 +228,24 @@ export default function CompanyDetails() {
                   <textarea
                     name="contentAr"
                     value={section.contentAr}
+                    onChange={(e) => handleTextChange(e, section.id)}
+                    className="w-full h-32 px-4 outline-none  border-gray-200 focus:border-primary duration-300  py-2 border rounded-md mt-2"
+                  />
+                </div>
+                <div className="flex flex-col items-start gap-1">
+                  <label className="text-[18px] py-2  pb-2 border-b border-b-primary w-fit mb-1">
+                    {section.title} (Dutch)
+                  </label>
+                  <input
+                    type="text"
+                    value={section.titleNl}
+                    name="titleNl"
+                    onChange={(e) => handleTextChange(e, section.id)}
+                    className="w-full  px-4 outline-none  py-2 border border-gray-200 focus:border-primary duration-300 rounded-md"
+                  />
+                  <textarea
+                    name="contentNl"
+                    value={section.contentNl}
                     onChange={(e) => handleTextChange(e, section.id)}
                     className="w-full h-32 px-4 outline-none  border-gray-200 focus:border-primary duration-300  py-2 border rounded-md mt-2"
                   />

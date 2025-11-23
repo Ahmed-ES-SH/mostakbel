@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaEnvelope,
@@ -20,12 +20,13 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { setUser } from "@/app/redux/slices/userSlice";
-import { useAppDispatch } from "@/app/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import Cookie from "cookie-universal";
 import { instance } from "@/app/_helpers/axios";
 import { encryptToken } from "@/app/_helpers/GlobalHelpers";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import LoadingPage from "@/app/_components/_global/LoadingPage";
 
 interface LoginForm {
   email: string;
@@ -33,9 +34,11 @@ interface LoginForm {
 }
 
 export default function LoginPage() {
+  const { user, loading } = useAppSelector((state) => state.user);
+
   const cookie = Cookie();
-  const dispatch = useAppDispatch();
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const [formData, setFormData] = useState<LoginForm>({
     email: "",
@@ -98,6 +101,15 @@ export default function LoginPage() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  useEffect(() => {
+    if (!loading && user) {
+      const direct = user.role == "admin" ? "/en/dashboard" : "/";
+      router.push(direct);
+    }
+  }, [loading]);
+
+  if (loading) return <LoadingPage />;
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">

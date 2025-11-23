@@ -1,5 +1,6 @@
 "use client";
 import { instance } from "@/app/_helpers/axios";
+import { useLocale } from "@/app/_hooks/useLocale";
 import { useTranslation } from "@/app/_hooks/useTranslation";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -9,6 +10,7 @@ import { toast } from "sonner";
 
 export default function NewsletterSection() {
   const t = useTranslation("footer");
+  const locale = useLocale();
 
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,7 +25,12 @@ export default function NewsletterSection() {
       setLoading(true);
       const response = await instance.post(`/subscribe`, { email });
       if (response.status == 201) {
-        toast.success("تم الاشتراك بنجاح");
+        const subscribeMessage = {
+          ar: "تم الاشتراك بنجاح",
+          en: "Subscribed successfully",
+          nl: "Subscribed successfully",
+        };
+        toast.success(subscribeMessage[locale ?? "nl"]);
         setEmail("");
       }
     } catch (error) {

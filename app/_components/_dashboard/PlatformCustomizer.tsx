@@ -15,7 +15,7 @@ const PlatformCustomizer: React.FC = () => {
   const [primaryColor, setPrimaryColor] = useState<string>("#3b9797");
   const [secondaryColor, setSecondaryColor] = useState<string>("#4a9782");
   const [updateLoading, setUpdateLoading] = useState(false);
-  const [navText, setNavText] = useState({ en: "", ar: "" });
+  const [navText, setNavText] = useState({ en: "", ar: "", nl: "" });
   const [open, setOpen] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -88,7 +88,7 @@ const PlatformCustomizer: React.FC = () => {
           setLogo(data.column_1);
           setPrimaryColor(data.column_2);
           setSecondaryColor(data.column_3);
-          setNavText(data.column_4 ?? { en: "", ar: "" });
+          setNavText(data.column_4 ?? { en: "", ar: "", nl: "" });
         }
       } catch (error) {
         console.log(error);
